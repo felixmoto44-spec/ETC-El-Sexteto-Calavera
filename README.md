@@ -1,10 +1,10 @@
-# 💀 ETC — El Cuarteto Calavera
+# 💀 ETC — El Sexteto Calavera
 
-Configuración de agentes y skills para [OpenCode](https://opencode.ai), el entorno de codificación con IA. Este repo alberga a **ETC — El Cuarteto Calavera**, cuatro agentes especializados que forman un equipo de desarrollo completo, más 32 skills (4 de agentes + 28 complementarias).
+Configuración de agentes y skills para [OpenCode](https://opencode.ai), el entorno de codificación con IA. Este repo alberga a **ETC — El Sexteto Calavera**, seis agentes especializados que forman un equipo de desarrollo completo, más 34 skills (6 de agentes + 28 complementarias).
 
-> _«Uno escribe el código, otro lo cura, el tercero lo cuestiona, el cuarto lo despliega. Juntos: ETC — El Cuarteto Calavera.»_
+> _«Uno escribe, otro cura, el tercero cuestiona, el cuarto despliega, el quinto pinta, el sexto forja. Juntos: ETC — El Sexteto Calavera.»_
 
-## 💀 ETC — Las 4 Skills/Agents Principales
+## 💀 ETC — Los 6 Agents/Skills Principales
 
 | ETC | Personaje | Rol | Frase |
 |-----|-----------|-----|-------|
@@ -12,6 +12,8 @@ Configuración de agentes y skills para [OpenCode](https://opencode.ai), el ento
 | 🩺 | **Bug Doctor** | Diagnóstico Forense | _"Sin repro, no toco el código."_ |
 | 🤓 | **El de las Gafas** | Domain Moderator | _"Una palabra ambigua hoy es un bug mañana."_ |
 | 🖐️ | **Las Manos** | Infrastructure & Ops | _"Si no está en código, no existe. Si no está automatizado, no escala."_ |
+| 🎨 | **El Pintor** | Frontend Expert | _"No basta con que funcione — tiene que verse espectacular y sentirse fluido."_ |
+| ⚒️ | **El Herrero** | Backend Expert | _"Cada API, cada schema, cada query está forjada sobre patrones probados."_ |
 
 ---
 
@@ -41,13 +43,29 @@ Incluye un **Modo Integración de APIs** para configurar servicios externos (Sup
 
 **Origen**: Diseñado desde cero para ETC, inspirado en [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) y [mattpocock/skills](https://github.com/mattpocock/skills).
 
+### 🎨 El Pintor — Frontend Expert
+
+Artista digital del equipo. Diseña interfaces espectaculares con React, CSS moderno, y animaciones fluidas (GSAP, Framer Motion, Three.js). Optimiza Core Web Vitals (LCP, INP, CLS), audita accesibilidad WCAG 2.1 AA, construye PWAs con capacidades offline, y prototipa en horas. Conoce dónde buscar inspiración (CodePen, Dribbble, Animista, Rive) y sabe cuándo usar CSS nativo vs una librería.
+
+Incluye 5 modos especiales: **Inspiración** (referencias visuales), **Animación** (diseño e implementación), **Performance** (Core Web Vitals), **Accesibilidad** (WCAG 2.1 AA completa), y **Prototipado Rápido** (del wireframe al prototipo funcional).
+
+**Origen**: Diseñado desde cero para ETC, absorbiendo `frontend-developer`, `accessibility-auditor`, `rapid-prototyper`, más conocimiento propio de animaciones, performance, PWA, y CSS moderno.
+
+### ⚒️ El Herrero — Backend Expert
+
+Forjador de sistemas del equipo. Diseña APIs robustas (REST/GraphQL/tRPC), modela bases de datos (PostgreSQL/Supabase con RLS, índices, migraciones), implementa autenticación (OAuth 2.0/OIDC, JWT, RBAC/ABAC), y aplica patrones de arquitectura (Hexagonal, CQRS, Event Sourcing, Modular Monolith). Optimiza queries con EXPLAIN ANALYZE, caching (Redis/Upstash), hunting de N+1, y audita seguridad (OWASP Top 10, rate limiting).
+
+Incluye 7 modos especiales: **API Design**, **Database** (schema, migraciones, índices), **Auth** (OAuth/OIDC), **Arquitectura** (patrones), **Serverless** (Vercel/Cloudflare edge), **Seguridad** (OWASP + hardening), y **Performance** (query optimization + caching).
+
+**Origen**: Diseñado desde cero para ETC, absorbiendo `backend-architect`, `database-optimizer`, `api-tester`, `security-engineer`, más conocimiento propio de tRPC, OAuth 2.0, CQRS, caching, y message queues.
+
 ---
 
 ## 🤝 Colaboración entre Agentes
 
-Los 4 agentes de ETC no trabajan en aislamiento — se invocan entre sí automáticamente según el contexto. Hay **23 hooks de colaboración** (C1–C23) documentados en sus instrucciones, y cada agente integra internamente la lógica de sus especialidades.
+Los 6 agentes de ETC no trabajan en aislamiento — se invocan entre sí automáticamente según el contexto. Hay **43 hooks de colaboración** (C1–C43) documentados en sus instrucciones, y cada agente integra internamente la lógica de sus especialidades.
 
-> _«El Maestro implementa, Bug Doctor diagnostica, El de las Gafas clarifica, Las Manos despliega. El que calla una duda al compañero, la paga con un bug.»_
+> _«El Maestro implementa, Bug Doctor diagnostica, El de las Gafas clarifica, Las Manos despliega, El Pintor da vida al frontend, El Herrero forja el backend. El que calla una duda al compañero, la paga con un bug.»_
 
 ### El patrón: Implementar → Diagnosticar → Clarificar → Desplegar
 
@@ -55,12 +73,14 @@ Cada agente tiene un rol primario claro, y cuando detecta que está fuera de su 
 
 | Agente | Rol primario | Deriva a... |
 |--------|-------------|-------------|
-| 🧪 **El Maestro** | Implementar features y fixes con TDD | 🤓 Gafas (dominio), 🩺 Bug Doctor (bugs), 🖐️ Manos (deploy/env) |
-| 🩺 **Bug Doctor** | Diagnosticar causa raíz de bugs | 🧪 Maestro (implementar fix), 🤓 Gafas (deuda de dominio), 🖐️ Manos (entorno/seguridad) |
-| 🤓 **El de las Gafas** | Clarificar ubiquitous language y documentación | 🧪 Maestro (blindar con tests), 🩺 Bug Doctor (bugs por ambigüedad), 🖐️ Manos (infra/secretos) |
-| 🖐️ **Las Manos** | Infraestructura, CI/CD, secretos, dependencias, incidentes, worktrees, auditoría de skills | 🧪 Maestro (deploy feature), 🩺 Bug Doctor (incidentes), 🤓 Gafas (ADR operacionales) |
+| 🧪 **El Maestro** | Implementar features y fixes con TDD | 🤓 Gafas (dominio), 🩺 Bug Doctor (bugs), 🖐️ Manos (deploy/env), 🎨 Pintor (frontend), ⚒️ Herrero (backend) |
+| 🩺 **Bug Doctor** | Diagnosticar causa raíz de bugs | 🧪 Maestro (implementar fix), 🤓 Gafas (deuda de dominio), 🖐️ Manos (entorno/seguridad), 🎨 Pintor (bugs visuales), ⚒️ Herrero (bugs de datos) |
+| 🤓 **El de las Gafas** | Clarificar ubiquitous language y documentación | 🧪 Maestro (blindar con tests), 🩺 Bug Doctor (bugs por ambigüedad), 🖐️ Manos (infra/secretos), 🎨 Pintor (patrones UI → ADR), ⚒️ Herrero (modelos de datos → CONTEXT) |
+| 🖐️ **Las Manos** | Infraestructura, CI/CD, secretos, dependencias, incidentes, worktrees, auditoría de skills | 🧪 Maestro (deploy feature), 🩺 Bug Doctor (incidentes), 🤓 Gafas (ADR operacionales), 🎨 Pintor (deps frontend), ⚒️ Herrero (infra backend) |
+| 🎨 **El Pintor** | Diseño visual, animaciones, performance frontend, accesibilidad, prototipado | 🧪 Maestro (implementar UI con TDD), 🖐️ Manos (dependencias), 🤓 Gafas (ADR de diseño), 🩺 Bug Doctor (bugs visuales), ⚒️ Herrero (contratos de API) |
+| ⚒️ **El Herrero** | APIs, schemas, auth, arquitectura, caching, seguridad | 🧪 Maestro (implementar con TDD), 🖐️ Manos (infraestructura), 🤓 Gafas (modelo de dominio), 🩺 Bug Doctor (bugs de datos), 🎨 Pintor (contratos de API) |
 
-### Los 23 hooks de colaboración (C1–C23)
+### Los 43 hooks de colaboración (C1–C43)
 
 #### Hooks C1–C14: El Trío Original (Maestro ↔ Bug Doctor ↔ Gafas)
 
@@ -100,6 +120,41 @@ Cada agente tiene un rol primario claro, y cuando detecta que está fuera de su 
 | C22 | 🤓 Gafas | Módulo shallow con bugs frecuentes | 🩺 Bug Doctor | Diagnóstico en paralelo |
 | C23 | 🤓 Gafas | Nuevo bounded context descubierto | 🧪 Maestro | Mapa de contextos actualizado |
 
+#### Hooks C24–C29: El Pintor — Frontend Expert
+
+| # | Inicia | Gatillo | Invoca a | Resultado |
+|---|--------|---------|----------|-----------|
+| C24 | 🎨 Pintor | Componente/UI listo para implementación | 🧪 Maestro | Ciclo TDD del componente con contrato visual |
+| C25 | 🎨 Pintor | Diseño requiere nuevas dependencias | 🖐️ Manos | Dependencias auditadas e instaladas |
+| C26 | 🎨 Pintor | Patrón de UI reutilizable creado | 🤓 Gafas | Evaluación de ADR de diseño |
+| C27 | 🎨 Pintor | Bug visual o de renderizado | 🩺 Bug Doctor | Diagnóstico forense del bug visual |
+| C28 | 🎨 Pintor | Necesita endpoint de API para la UI | ⚒️ Herrero | Contrato de API diseñado |
+| C29 | 🎨 Pintor | UI toca conceptos del dominio | 🤓 Gafas | Verificación de ubiquitous language |
+
+#### Hooks C30–C35: El Herrero — Backend Expert
+
+| # | Inicia | Gatillo | Invoca a | Resultado |
+|---|--------|---------|----------|-----------|
+| C30 | ⚒️ Herrero | API endpoint modelado y listo | 🧪 Maestro | Ciclo TDD del endpoint con contrato |
+| C31 | ⚒️ Herrero | Necesita infraestructura (DB, Redis, queues) | 🖐️ Manos | Infraestructura provisionada y verificada |
+| C32 | ⚒️ Herrero | Modelo de datos toca el dominio | 🤓 Gafas | Ubiquitous language verificado en schema |
+| C33 | ⚒️ Herrero | Race condition, deadlock o bug de datos | 🩺 Bug Doctor | Diagnóstico forense del bug de datos |
+| C34 | ⚒️ Herrero | Endpoint listo, contrato de API final | 🎨 Pintor | Frontend informado del contrato |
+| C35 | ⚒️ Herrero | Migración lista para staging/prod | 🖐️ Manos | Migración ejecutada con plan de rollback |
+
+#### Hooks C36–C43: Los Originales invocan a Pintor y Herrero
+
+| # | Inicia | Gatillo | Invoca a | Resultado |
+|---|--------|---------|----------|-----------|
+| C36 | 🧪 Maestro | Feature con scope frontend | 🎨 Pintor | Diseño visual + contrato de UI |
+| C37 | 🧪 Maestro | Feature con scope backend | ⚒️ Herrero | Diseño API/DB + contrato de endpoint |
+| C38 | 🩺 Bug Doctor | Bug de renderizado/visual | 🎨 Pintor | Revisión del componente afectado |
+| C39 | 🩺 Bug Doctor | Bug de datos/DB/race condition | ⚒️ Herrero | Revisión del schema/query afectado |
+| C40 | 🤓 Gafas | Patrón de UI para documentar | 🎨 Pintor | ADR de diseño registrado |
+| C41 | 🤓 Gafas | Modelo de datos para documentar | ⚒️ Herrero | CONTEXT.md actualizado |
+| C42 | 🖐️ Manos | Dependencias frontend instaladas | 🎨 Pintor | Dependencias listas para usar |
+| C43 | 🖐️ Manos | Infraestructura backend provisionada | ⚒️ Herrero | Infraestructura lista para usar |
+
 ### Lógica especializada absorbida
 
 Cada agente principal integra la lógica de sus especialidades sin necesidad de sub-agentes:
@@ -108,6 +163,8 @@ Cada agente principal integra la lógica de sus especialidades sin necesidad de 
 |--------|-------------------|
 | 🤓 **El de las Gafas** | ddd-strategic-design (subdominios), ddd-context-mapping (patrones bounded context), improve-codebase-architecture (deepening) |
 | 🖐️ **Las Manos** | senior-devops (CI/CD, Docker, IaC), dependency-auditor (CVEs, licencias), env-secrets-manager (.env, leaks), incident-commander (SEV-0→3), git-worktree-manager, skill-security-auditor, git-guardrails, setup-pre-commit |
+| 🎨 **El Pintor** | frontend-developer (React/Vue/Angular), accessibility-auditor (WCAG), rapid-prototyper (MVPs), más conocimiento propio de animaciones (GSAP, Framer Motion, Three.js), performance (Core Web Vitals), PWA, y CSS moderno |
+| ⚒️ **El Herrero** | backend-architect (sistemas escalables), database-optimizer (PostgreSQL/Supabase), api-tester (validación), security-engineer (OWASP), más conocimiento propio de tRPC, OAuth 2.0/OIDC, CQRS/Event Sourcing, caching, y message queues |
 
 ### Ciclos compuestos — cuando los 23 hooks se encadenan
 
@@ -157,6 +214,28 @@ Las Manos activa sus modos: Incidentes (SEV-1) → Secretos (rotación) → Guar
 Manos → Bug Doctor ("incidente mitigado, post-mortem documentado")
 ```
 
+#### 🎨⚒️ "Full-stack feature con contrato" (C37→C34→C24→C30)
+
+```
+C37: Maestro → Herrero ("feature backend: diseñá el endpoint")
+  ↓
+C34: Herrero → Pintor ("endpoint listo: aquí el contrato de API")
+  ↓
+C24: Pintor → Maestro ("UI diseñada: implementala con TDD")
+  ↓
+C30: Herrero → Maestro ("endpoint diseñado: implementalo con TDD")
+  ↓
+Maestro ejecuta ciclos TDD en paralelo (frontend + backend)
+```
+
+#### 🎨🤓 "De la UI al ADR de diseño" (C26→C40)
+
+```
+C26: Pintor → Gafas ("creé un patrón de UI reutilizable, ¿lo documento?")
+  ↓
+C40: Gafas → Pintor ("sí, lo registro como ADR de diseño")
+```
+
 ### 🚨 Delegación obligatoria
 
 Cada agente tiene reglas duras de delegación — no sugerencias, sino checkpoints obligatorios:
@@ -166,14 +245,30 @@ Cada agente tiene reglas duras de delegación — no sugerencias, sino checkpoin
 | 🧪 Maestro | → Gafas | Risk ≥ 60 en INIT |
 | 🧪 Maestro | → Bug Doctor | ≥ 3 hipótesis en diagnóstico |
 | 🧪 Maestro | → Manos | Entorno de testing no verificado |
+| 🧪 Maestro | → Pintor | Feature con scope frontend |
+| 🧪 Maestro | → Herrero | Feature con scope backend |
 | 🩺 Bug Doctor | → Maestro | Fix identificado (Fase 5) |
 | 🩺 Bug Doctor | → Gafas | Hipótesis toca dominio |
 | 🩺 Bug Doctor | → Manos | Falta tooling de diagnóstico |
+| 🩺 Bug Doctor | → Pintor | Bug visual/de renderizado |
+| 🩺 Bug Doctor | → Herrero | Bug de datos/DB/race condition |
 | 🤓 Gafas | → Bug Doctor | Código ≠ docs |
 | 🤓 Gafas | → Maestro | Término clarificado / ADR creado |
+| 🤓 Gafas | → Pintor | Patrón de UI para ADR |
+| 🤓 Gafas | → Herrero | Modelo de datos para CONTEXT |
 | 🖐️ Manos | → Maestro | Entorno listo |
 | 🖐️ Manos | → Bug Doctor | Fallo de sistema/runtime |
 | 🖐️ Manos | → Gafas | Tooling afecta al equipo |
+| 🎨 Pintor | → Maestro | Componente UI listo |
+| 🎨 Pintor | → Manos | Nuevas dependencias frontend |
+| 🎨 Pintor | → Gafas | UI toca dominio / patrón reusable |
+| 🎨 Pintor | → Bug Doctor | Bug visual no trivial |
+| 🎨 Pintor | → Herrero | Necesita contrato de API |
+| ⚒️ Herrero | → Maestro | Endpoint/API listo |
+| ⚒️ Herrero | → Manos | Infraestructura necesaria |
+| ⚒️ Herrero | → Gafas | Diseño API/DB toca dominio |
+| ⚒️ Herrero | → Bug Doctor | Race condition / bug de datos |
+| ⚒️ Herrero | → Pintor | Contrato de API listo |
 
 ---
 
@@ -182,16 +277,20 @@ Cada agente tiene reglas duras de delegación — no sugerencias, sino checkpoin
 ```
 tu-proyecto/
 ├── .opencode/
-│   ├── agents/              # Agentes del cuarteto
+│   ├── agents/              # Agentes del sexteto
 │   │   ├── el-maestro.md
 │   │   ├── bug-doctor.md
 │   │   ├── el-de-las-gafas.md
-│   │   └── las-manos.md
-│   └── skills/              # Skills (32 especialidades)
+│   │   ├── las-manos.md
+│   │   ├── el-pintor.md
+│   │   └── el-herrero.md
+│   └── skills/              # Skills (34 especialidades)
 │       ├── el-maestro/SKILL.md
 │       ├── bug-doctor/SKILL.md
 │       ├── el-de-las-gafas/SKILL.md
 │       ├── las-manos/SKILL.md
+│       ├── el-pintor/SKILL.md
+│       ├── el-herrero/SKILL.md
 │       ├── ddd-context-mapping/SKILL.md
 │       ├── ddd-strategic-design/SKILL.md
 │       ├── improve-codebase-architecture/SKILL.md
@@ -254,7 +353,7 @@ Estas skills están absorbidas como modos internos de El de las Gafas y Las Mano
 | `git-guardrails` | Pre-commit hooks de seguridad | 🖐️ Las Manos |
 | `setup-pre-commit` | Instalación y configuración de pre-commit | 🖐️ Las Manos |
 
-**Total: 4 agentes principales con lógica especializada absorbida + 32 skills (4 de agentes + 28 complementarias).**
+**Total: 6 agentes principales con lógica especializada absorbida + 34 skills (6 de agentes + 28 complementarias).**
 
 ---
 
@@ -322,11 +421,23 @@ Luego en OpenCode:
 @bug-doctor diagnostica el error 500 intermitente
 @el-de-las-gafas revisa mi modelo de dominio
 @las-manos configura el pipeline de CI/CD
+@el-pintor diseña el landing page con animaciones
+@el-herrero modela el schema de órdenes y pagos
 ```
 
 ---
 
 ## 📦 Releases
+
+### v2.0.0 — El Sexteto Calavera (2026-05-09)
+
+Se unen dos nuevos calaveras al equipo:
+- 🎨 **El Pintor** — Frontend Expert: diseño visual, animaciones (GSAP, Framer Motion, Three.js), performance (Core Web Vitals), accesibilidad WCAG 2.1 AA, PWA, prototipado rápido. 5 modos especiales + 6 hooks de colaboración (C24–C29)
+- ⚒️ **El Herrero** — Backend Expert: API design (REST/GraphQL/tRPC), database (PostgreSQL/Supabase), auth (OAuth 2.0/OIDC), arquitectura (Hexagonal, CQRS), caching, seguridad OWASP. 7 modos especiales + 6 hooks de colaboración (C30–C35)
+- **8 nuevos hooks** en agentes existentes (C36–C43): Maestro, Bug Doctor, Gafas y Manos ahora colaboran con Pintor y Herrero
+- **43 hooks totales** (C1–C43) entre los 6 agentes
+- **26 reglas de delegación obligatoria** — 11 originales + 15 nuevas para Pintor y Herrero
+- **34 skills** en `.opencode/skills/` (6 de agentes + 28 complementarias)
 
 ### v1.0.0 — El Cuarteto Calavera (2026-05-08)
 
