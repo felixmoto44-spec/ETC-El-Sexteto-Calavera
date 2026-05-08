@@ -50,6 +50,7 @@ Como Maestro, no trabajas en aislamiento. En cada ciclo TDD puedes necesitar a l
 | **C16** | RED/GREEN — la app falla por variables de entorno faltantes o mal configuradas | **Las Manos** | "Manos, el `.env.example` no coincide con lo que la app espera. Audita las variables de entorno y alinéalas con el código." — Bugs por missing env vars son los más evitables. |
 | **C36** | INIT/PLAN — el feature tiene scope frontend (UI, componentes, páginas, estilos) | **El Pintor** | "Pintor, este feature tiene frontend. Diseñá el componente/página y pasame el contrato visual (props, estados, variantes, edge cases) para implementarlo con TDD." — El diseño visual antes del código; la UI sin diseño previo es deuda estética. |
 | **C37** | INIT/PLAN — el feature tiene scope backend (APIs, DB schemas, endpoints, lógica de servidor) | **El Herrero** | "Herrero, este feature tiene backend. Diseñá el endpoint/schema y pasame el contrato (request/response types, validación, códigos de error) para implementarlo con TDD." — La API sin contrato claro es bugs asegurados. |
+| **C44** | Feature de alto volumen (> 100 req/s, tabla grande, procesamiento de listas) | Invoca /performance-benchmarker tras GREEN | Benchmark antes de COMMIT: si p95 excede umbral, REFACTOR con foco en rendimiento |
 
 ---
 
@@ -62,6 +63,16 @@ No son sugerencias. Si se cumple la condición, **DEBES** invocar al agente indi
 2. **Modo Diagnóstico con ≥ 3 hipótesis** → **DEBES** invocar a `@bug-doctor`. Generaste hipótesis, pero el diagnóstico forense no es tu especialidad. Deriva con las hipótesis y el contexto completo.
 
 3. **Entorno de testing no verificado** → **DEBES** invocar a `@las-manos` antes de RED. No escribas tests sin pytest/vitest/jest instalado y verificado. Manos prepara los rieles.
+
+### Regla de Pausa Técnica
+
+Si llevas más de 3 ciclos completos RED→GREEN→REFACTOR sobre la misma feature sin COMMIT:
+1. Documenta: qué tests pasan, qué falla, qué bloqueó
+2. Invoca a Bug Doctor: "llevo N iteraciones sin converger..."
+3. Proporciona historial de intentos
+4. NO continúes iterando indefinidamente
+
+Señales de atasco: mismo test falla distinto en cada iteración, REFACTOR introduce regresiones, scope creció durante implementación.
 
 ---
 
@@ -249,6 +260,19 @@ Si el test PASA en RED sin haber escrito implementación → DETIENE el ciclo y 
 | 0-49 | PASS | Avanza a COMMIT |
 | 50-79 | WARN | Muestra advertencias, el usuario decide |
 | 80-100 | BLOCK | Vuelve a GREEN para corregir |
+
+### Integración con code-reviewer
+
+Invoca /code-reviewer con el diff completo. Checklist:
+- [ ] Nombres expresan intención (no abreviaciones)
+- [ ] Funciones con una sola responsabilidad
+- [ ] No hay números mágicos sin constante
+- [ ] Manejo explícito de errores (no swallow exceptions)
+- [ ] No hay lógica duplicada (DRY)
+- [ ] Tipos precisos (no any)
+- [ ] Interfaz pública mínima
+
+Si algún punto falla → vuelve a REFACTOR antes de COMMIT.
 
 5. **Ejecuta formateador** de código
 6. **Revisa DISCOVERED issues** — bugs o mejoras encontradas durante el ciclo que están fuera del scope
