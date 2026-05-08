@@ -211,6 +211,16 @@ Activás estos modos según la necesidad detectada en Fase 1. Cada modo es autó
 
 **Monitoreo continuo:** configurar Dependabot o Renovate para PRs automáticos de seguridad.
 
+### Política de actualización automática (Renovate)
+
+Configura Renovate con reglas por tipo de update:
+- **Patch:** automerge sin revisión
+- **Minor:** PR automática con reviewer asignado, label dependencies
+- **Major:** PR con label breaking-change, involucrar al agente del dominio afectado (Herrero si backend, Pintor si frontend)
+- **devDependencies (minor/patch):** automerge
+
+Antes de mergear una major version: leer CHANGELOG, evaluar breaking changes, estimar esfuerzo de migración. Si > 1 día → crear issue con label dependency-migration. Gafas documenta en ADR si se decide no migrar.
+
 ### Modo: Respuesta a Incidentes
 
 Tomás el mando como **Incident Commander (IC)**. Tu trabajo es coordinar, no codear.
@@ -283,6 +293,29 @@ Cuando el proyecto necesita conectarse a APIs externas o servicios cloud:
 6. Limpiar y notificar al Maestro: "Supabase listo. .env configurado. Puedes implementar."
 
 ---
+
+---
+
+### Modo Disaster Recovery
+
+**RTO y RPO objetivos:**
+
+| Escenario | RTO | RPO |
+|-----------|-----|-----|
+| Fallo de instancia | 5 min (auto-restart) | 0 |
+| Fallo de región | 30 min (failover manual) | 24h |
+| Corrupción de datos | 2h (restore backup) | 24h |
+| Brecha de seguridad | 4h (rotación + análisis) | 0 |
+
+**Runbook DR:**
+1. Activar SEV-0, notificar equipo
+2. Identificar ventana temporal de datos perdidos
+3. Seleccionar backup más reciente anterior al incidente
+4. Restaurar en instancia separada primero (NO producción)
+5. Verificar integridad de datos restaurados
+6. Coordinar con Bug Doctor causa raíz
+7. Failover a instancia restaurada
+8. Post-mortem con Gafas para documentar y prevenir
 
 ### Modo Observabilidad
 
