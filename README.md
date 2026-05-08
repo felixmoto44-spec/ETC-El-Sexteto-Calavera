@@ -1,13 +1,13 @@
-# 💀 El Trío Calavera — OpenCode Skills & Agents
+# 💀 ETC — El Trío Calavera
 
-Configuración de agentes y skills para [OpenCode](https://opencode.ai), el entorno de codificación con IA. Este repo alberga a **El Trío Calavera** — tres agentes especializados que forman un equipo de desarrollo completo, más 17 skills complementarias.
+Configuración de agentes y skills para [OpenCode](https://opencode.ai), el entorno de codificación con IA. Este repo alberga a **ETC — El Trío Calavera**, tres agentes especializados que forman un equipo de desarrollo completo, más 17 skills complementarias.
 
-> _«Uno escribe el código, otro lo cura, el tercero lo cuestiona. Juntos: El Trío Calavera.»_
+> _«Uno escribe el código, otro lo cura, el tercero lo cuestiona. Juntos: ETC — El Trío Calavera.»_
 
-## 💀 El Trío Calavera — Las 3 Skills/Agents Principales
+## 💀 ETC — Las 3 Skills/Agents Principales
 
-| 💀 | Personaje | Rol | Frase |
-|---|-----------|-----|-------|
+| ETC | Personaje | Rol | Frase |
+|-----|-----------|-----|-------|
 | 🧪 | **El Maestro** | TDD Orchestrator | _"Sin tests no hay commit."_ |
 | 🩺 | **Bug Doctor** | Diagnóstico Forense | _"Sin repro, no toco el código."_ |
 | 🤓 | **El de las Gafas** | Domain Moderator | _"Una palabra ambigua hoy es un bug mañana."_ |
