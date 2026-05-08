@@ -1,16 +1,17 @@
-# 💀 ETC — El Trío Calavera
+# 💀 ETC — El Cuarteto Calavera
 
-Configuración de agentes y skills para [OpenCode](https://opencode.ai), el entorno de codificación con IA. Este repo alberga a **ETC — El Trío Calavera**, tres agentes especializados que forman un equipo de desarrollo completo, más 17 skills complementarias.
+Configuración de agentes y skills para [OpenCode](https://opencode.ai), el entorno de codificación con IA. Este repo alberga a **ETC — El Cuarteto Calavera**, cuatro agentes especializados que forman un equipo de desarrollo completo, más 28 skills complementarias.
 
-> _«Uno escribe el código, otro lo cura, el tercero lo cuestiona. Juntos: ETC — El Trío Calavera.»_
+> _«Uno escribe el código, otro lo cura, el tercero lo cuestiona, el cuarto lo despliega. Juntos: ETC — El Cuarteto Calavera.»_
 
-## 💀 ETC — Las 3 Skills/Agents Principales
+## 💀 ETC — Las 4 Skills/Agents Principales
 
 | ETC | Personaje | Rol | Frase |
 |-----|-----------|-----|-------|
 | 🧪 | **El Maestro** | TDD Orchestrator | _"Sin tests no hay commit."_ |
 | 🩺 | **Bug Doctor** | Diagnóstico Forense | _"Sin repro, no toco el código."_ |
 | 🤓 | **El de las Gafas** | Domain Moderator | _"Una palabra ambigua hoy es un bug mañana."_ |
+| 🖐️ | **Las Manos** | Infrastructure & Ops | _"Si no está en código, no existe. Si no está automatizado, no escala."_ |
 
 ---
 
@@ -32,246 +33,177 @@ Moderador de dominio que ve lo que otros pasan por alto: términos ambiguos, con
 
 **Origen**: [mattpocock/skills](https://github.com/mattpocock/skills)
 
----
+### 🖐️ Las Manos — Infrastructure & Operations Specialist
 
+El cuarto calavera, especialista en todo lo operacional: pipelines de CI/CD, contenedores Docker, Infraestructura como Código, gestión de secretos, auditoría de dependencias, respuesta a incidentes, worktrees de git y seguridad operacional. Sin él, el código no llega a producción.
+
+**Origen**: Diseñado desde cero para ETC, inspirado en [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) y [mattpocock/skills](https://github.com/mattpocock/skills).
+
+---
 
 ## 🤝 Colaboración entre Agentes
 
-Los 3 agentes de ETC no trabajan en aislamiento — se invocan entre sí automáticamente según el contexto. Hay **14 hooks de colaboración** documentados en sus instrucciones, formando un sistema vivo donde el conocimiento fluye entre diagnóstico, implementación y clarificación.
+Los 4 agentes de ETC no trabajan en aislamiento — se invocan entre sí automáticamente según el contexto. Hay **30 hooks de colaboración** (C1–C30) documentados en sus instrucciones, formando un sistema vivo donde el conocimiento fluye entre implementación, diagnóstico, clarificación y operaciones.
 
-> _«El Maestro implementa, Bug Doctor diagnostica, El de las Gafas clarifica. El que calla una duda al compañero, la paga con un bug.»_
+> _«El Maestro implementa, Bug Doctor diagnostica, El de las Gafas clarifica, Las Manos despliega. El que calla una duda al compañero, la paga con un bug.»_
 
-### El patrón: Implementar → Diagnosticar → Clarificar
+### El patrón: Implementar → Diagnosticar → Clarificar → Desplegar
 
 Cada agente tiene un rol primario claro, y cuando detecta que está fuera de su especialidad, deriva al colega adecuado:
 
 | Agente | Rol primario | Deriva a... |
 |--------|-------------|-------------|
-| 🧪 **El Maestro** | Implementar features y fixes con TDD | 🤓 Gafas (cuando el dominio es ambiguo) y 🩺 Bug Doctor (cuando hay bugs complejos) |
-| 🩺 **Bug Doctor** | Diagnosticar causa raíz de bugs | 🧪 Maestro (para implementar el fix con TDD) y 🤓 Gafas (cuando el bug es síntoma de deuda de dominio) |
-| 🤓 **El de las Gafas** | Clarificar el ubiquitous language y mantener documentación viva | 🧪 Maestro (para blindar reglas de dominio con tests) y 🩺 Bug Doctor (cuando la ambigüedad ya causó bugs) |
+| 🧪 **El Maestro** | Implementar features y fixes con TDD | 🤓 Gafas (dominio), 🩺 Bug Doctor (bugs), 🖐️ Manos (deploy/env) |
+| 🩺 **Bug Doctor** | Diagnosticar causa raíz de bugs | 🧪 Maestro (implementar fix), 🤓 Gafas (deuda de dominio), 🖐️ Manos (entorno/seguridad) |
+| 🤓 **El de las Gafas** | Clarificar ubiquitous language y documentación | 🧪 Maestro (blindar con tests), 🩺 Bug Doctor (bugs por ambigüedad), 🖐️ Manos (infra/secretos) |
+| 🖐️ **Las Manos** | Infraestructura, CI/CD, secretos, dependencias | 🧪 Maestro (deploy feature), 🩺 Bug Doctor (incidentes), 🤓 Gafas (ADR operacionales) + sub-agentes especializados |
 
-### Las 14 colaboraciones
+### Las 30 colaboraciones (C1–C30)
 
-Cada hook está numerado (C1–C14) y documentado en el archivo del agente que **inicia** la colaboración:
+#### Hooks C1–C14: El Trío Original (Maestro ↔ Bug Doctor ↔ Gafas)
 
 | # | Inicia | Gatillo | Invoca a | Resultado |
 |---|--------|---------|----------|-----------|
-| C1 | 🧪 Maestro | Modo Diagnóstico: bug complejo reportado | 🩺 Bug Doctor | Diagnóstico forense con causa raíz |
-| C2 | 🧪 Maestro | INIT/PLAN: feature toca términos no documentados | 🤓 Gafas | Términos clarificados antes de diseñar |
-| C3 | 🧪 Maestro | PLAN: se crean o modifican entidades de dominio | 🤓 Gafas | Diseño validado contra el glosario |
-| C4 | 🧪 Maestro | PLAN con score BLOCK (60+) y riesgo de dominio | 🤓 Gafas | Segunda mirada en decisiones de alto impacto |
-| C5 | 🧪 Maestro | REVIEW: naming inconsistente con CONTEXT.md | 🤓 Gafas | Código alineado con ubiquitous language |
-| C6 | 🧪 Maestro | REVIEW: bugs descubiertos en código existente | 🩺 Bug Doctor | Bugs huérfanos diagnosticados |
+| C1 | 🧪 Maestro | Bug complejo reportado | 🩺 Bug Doctor | Diagnóstico forense |
+| C2 | 🧪 Maestro | Feature toca términos no documentados | 🤓 Gafas | Términos clarificados |
+| C3 | 🧪 Maestro | Se crean/modifican entidades de dominio | 🤓 Gafas | Diseño validado contra glosario |
+| C4 | 🧪 Maestro | PLAN con score BLOCK (60+) | 🤓 Gafas | Segunda mirada en alto riesgo |
+| C5 | 🧪 Maestro | Naming inconsistente con CONTEXT.md | 🤓 Gafas | Código alineado con ubiquitous language |
+| C6 | 🧪 Maestro | Bugs descubiertos en código existente | 🩺 Bug Doctor | Bugs huérfanos diagnosticados |
 | C7 | 🩺 Bug Doctor | Hipótesis involucra reglas de negocio | 🤓 Gafas | Verificación contra modelo de dominio |
 | C8 | 🩺 Bug Doctor | Falta infraestructura de testing | 🧪 Maestro | Mini-ciclo TDD para test de repro |
-| C9 | 🩺 Bug Doctor | Causa raíz confirmada, fix listo | 🧪 Maestro | Fix implementado con disciplina TDD |
-| C10 | 🩺 Bug Doctor | Autopsia revela deuda de documentación | 🤓 Gafas | CONTEXT.md actualizado, ADR si procede |
+| C9 | 🩺 Bug Doctor | Causa raíz confirmada, fix listo | 🧪 Maestro | Fix con disciplina TDD |
+| C10 | 🩺 Bug Doctor | Autopsia revela deuda de documentación | 🤓 Gafas | CONTEXT.md actualizado |
 | C11 | 🤓 Gafas | Contradicción grave código ↔ discurso | 🩺 Bug Doctor | Bug de lógica de negocio diagnosticado |
-| C12 | 🤓 Gafas | Regla de dominio documentada sin tests | 🧪 Maestro | Ciclo TDD para blindar la regla |
-| C13 | 🤓 Gafas | ADR que impacta arquitectura | 🧪 Maestro | Maestro notificado para futuras features |
-| C14 | 🤓 Gafas | Patrón de ambigüedad recurrente (múltiples módulos) | 🩺 Bug Doctor | Diagnóstico preventivo de bugs latentes |
+| C12 | 🤓 Gafas | Regla de dominio sin tests | 🧪 Maestro | Ciclo TDD para blindar |
+| C13 | 🤓 Gafas | ADR que impacta arquitectura | 🧪 Maestro | Maestro notificado |
+| C14 | 🤓 Gafas | Patrón de ambigüedad recurrente | 🩺 Bug Doctor | Diagnóstico preventivo |
 
-### Ciclos compuestos — cuando las 14 colaboraciones se encadenan
+#### Hooks C15–C20: El Cuarteto — Los Originales invocan a Las Manos
 
-Los hooks no son eventos aislados: se encadenan formando ciclos compuestos que cubren escenarios completos de desarrollo:
+| # | Inicia | Gatillo | Invoca a | Resultado |
+|---|--------|---------|----------|-----------|
+| C15 | 🧪 Maestro | Feature necesita deploy, no hay pipeline | 🖐️ Manos | Pipeline CI/CD + variables saneadas |
+| C16 | 🧪 Maestro | Variables de entorno inconsistentes | 🖐️ Manos | `.env.example` alineado con código |
+| C17 | 🩺 Bug Doctor | Necesita staging para reproducir bug | 🖐️ Manos | Entorno efímero que replica producción |
+| C18 | 🩺 Bug Doctor | Bug de seguridad (secretos, CVEs) | 🖐️ Manos | Blindaje inmediato + rotación |
+| C19 | 🤓 Gafas | ADR necesita restricciones de infra | 🖐️ Manos | Contexto operacional para el ADR |
+| C20 | 🤓 Gafas | Secretos en documentación de dominio | 🖐️ Manos | Limpieza + prevención de leaks |
 
-#### 🐛🔍 "Bug revela deuda de dominio"
+#### Hooks C21–C30: Las Manos orquesta sus sub-agentes especializados
 
-El ciclo más virtuoso: un bug expone que el lenguaje del dominio está corrupto, y los 3 agentes colaboran para curarlo de raíz.
+| # | Inicia | Gatillo | Invoca a | Resultado |
+|---|--------|---------|----------|-----------|
+| C21 | 🖐️ Manos | Crear/actualizar pipeline CI/CD | **senior-devops** | Pipeline multi-stage con Docker e IaC |
+| C22 | 🖐️ Manos | Auditoría de dependencias | **dependency-auditor** | CVEs, licencias y versiones reportadas |
+| C23 | 🖐️ Manos | Gestión de secretos y leaks | **env-secrets-manager** | Secretos rotados, leaks limpiados |
+| C24 | 🖐️ Manos | Incidente en producción | **incident-commander** | Severidad, roles, mitigación, post-mortem |
+| C25 | 🖐️ Manos | Trabajo paralelo en múltiples branches | **git-worktree-manager** | Worktrees aislados y sincronizados |
+| C26 | 🖐️ Manos | Skill de terceros a instalar | **skill-security-auditor** | Auditoría de seguridad antes de instalar |
+| C27 | 🖐️ Manos | Configurar git hooks de seguridad | **git-guardrails** | pre-commit + pre-push con gitleaks |
+| C28 | 🖐️ Manos | Proyecto sin pre-commit | **setup-pre-commit** | Framework instalado con hooks estándar |
+| C29 | 🖐️ Manos | Post-mortem post-incidente | inc-commander + devops | Documentación + salvaguardas permanentes |
+| C30 | 🖐️ Manos | Auditoría completa de seguridad | auditor + secrets + deps | Reporte consolidado de seguridad |
+
+### Ciclos compuestos — cuando las 30 colaboraciones se encadenan
+
+#### 🐛🔍 "Bug revela deuda de dominio" (C7→C11→C10→C14)
 
 ```
 C7: Bug Doctor → Gafas ("¿este bug es malentendido del dominio?")
  ↓
-C11: Gafas → Bug Doctor ("sí, el código contradice el glosario. Diagnostica el impacto")
+C11: Gafas → Bug Doctor ("sí, el código contradice el glosario")
  ↓
-C10: Bug Doctor → Gafas ("autopsia: documenta esto en CONTEXT.md para que no se repita")
+C10: Bug Doctor → Gafas ("autopsia: documenta esto en CONTEXT.md")
  ↓
-C14: Gafas → Bug Doctor ("hay un patrón de ambigüedad en 3 módulos. Diagnostica preventivamente")
+C14: Gafas → Bug Doctor ("hay patrón de ambigüedad en 3 módulos")
 ```
 
-**Resultado**: no solo se arregla el bug — se cura el lenguaje que lo causó y se previenen bugs futuros.
-
-#### 🧪🤓 "Feature con validación de dominio"
-
-Cuando El Maestro va a implementar una feature que toca reglas de negocio, El de las Gafas lo acompaña de principio a fin:
+#### 🧪🤓 "Feature con validación de dominio" (C2→C12→C5→C13)
 
 ```
-C2/C3/C4: Maestro → Gafas ("clarifica términos / revisa diseño / valida alto riesgo")
+C2/C3/C4: Maestro → Gafas ("clarifica / revisa diseño / valida alto riesgo")
  ↓
-C12: Gafas → Maestro ("esa regla de dominio no tiene tests. Abre un ciclo TDD para blindarla")
+C12: Gafas → Maestro ("esa regla de dominio no tiene tests. Blíndala con TDD")
  ↓
 C5: Maestro → Gafas ("código listo, ¿el naming respeta el glosario?")
  ↓
-C13: Gafas → Maestro ("creé ADR-000X. Consúltalo en futuras features que toquen esto")
+C13: Gafas → Maestro ("creé ADR-000X. Consúltalo en futuras features")
 ```
 
-**Resultado**: la feature sale con ubiquitous language consistente, tests que blindan las reglas de dominio, y un ADR que guiará a quien toque ese código después.
-
-#### 🩺🧪 "Fix con garantías TDD"
-
-Bug Doctor encuentra la causa raíz, pero no implementa el fix a lo loco — se lo entrega al Maestro con todas las garantías:
+#### 🖐️🚀 "Deploy con garantías" (C15→C16→C21→C23)
 
 ```
-C9: Bug Doctor → Maestro ("causa raíz confirmada. Toma el fix y mi test de regresión")
+C15: Maestro → Manos ("necesito pipeline para deployar esta feature")
  ↓
-Maestro ejecuta RED → GREEN → REFACTOR → REVIEW
+C16: Maestro → Manos (".env.example no coincide con la app")
  ↓
-C6: Maestro → Bug Doctor ("encontré más bugs durante el quality-gate")
+C21: Manos → Senior DevOps ("configura pipeline multi-stage")
  ↓
-C8: Bug Doctor → Maestro ("necesito tests de repro para estas hipótesis")
+C23: Manos → Env Secrets Manager ("audita secretos antes del deploy")
 ```
 
-**Resultado**: el fix no es un parche — es un ciclo TDD completo con test de regresión, quality-gate, y bugs secundarios derivados.
-
-#### 🤓🔍 "De la ambigüedad al blindaje"
-
-Una sesión de clarificación de dominio dispara una cascada de acciones concretas:
+#### 🔒🛡️ "Incidente de seguridad" (C18→C24→C23→C29)
 
 ```
-C14: Gafas → Bug Doctor ("término X usado inconsistentemente. Diagnostica bugs latentes")
+C18: Bug Doctor → Manos ("¡secreto expuesto en el código!")
  ↓
-C7: Bug Doctor → Gafas ("confirmado: la ambigüedad ya causó un bug sutil. ¿Está esto documentado?")
+C24: Manos → Incident Commander ("declara SEV-1, coordina respuesta")
  ↓
-C8: Bug Doctor → Maestro ("necesito tests de repro para blindar este edge case")
+C23: Manos → Env Secrets Manager ("rota el secreto, limpia historial")
  ↓
-C12: Gafas → Maestro ("regla documentada. Ahora blíndala con tests")
+C29: Manos → Incident Commander + Senior DevOps ("post-mortem + salvaguardas")
 ```
-
-**Resultado**: lo que empezó como "este término es ambiguo" termina con documentación actualizada, bugs latentes diagnosticados, y tests que blindan el comportamiento correcto.
 
 ---
 
 ## Estructura de Archivos
 
-Para implementar estas skills en tu proyecto, necesitas esta estructura:
-
 ```
 tu-proyecto/
 ├── .opencode/
-│   ├── .gitignore           # node_modules, package.json, etc.
 │   ├── agents/              # Agentes (subagentes autónomos)
 │   │   ├── el-maestro.md
 │   │   ├── bug-doctor.md
-│   │   └── el-de-las-gafas.md
+│   │   ├── el-de-las-gafas.md
+│   │   ├── las-manos.md
+│   │   ├── improve-codebase-architecture.md
+│   │   ├── ddd-context-mapping.md
+│   │   ├── ddd-strategic-design.md
+│   │   ├── senior-devops.md
+│   │   ├── dependency-auditor.md
+│   │   ├── env-secrets-manager.md
+│   │   ├── incident-commander.md
+│   │   ├── git-worktree-manager.md
+│   │   ├── skill-security-auditor.md
+│   │   ├── git-guardrails.md
+│   │   └── setup-pre-commit.md
 │   └── skills/              # Skills (instrucciones especializadas)
-│       ├── el-maestro/
-│       │   └── SKILL.md
-│       ├── bug-doctor/
-│       │   └── SKILL.md
-│       ├── el-de-las-gafas/
-│       │   ├── SKILL.md
-│       │   ├── ADR-FORMAT.md
-│       │   └── CONTEXT-FORMAT.md
-│       └── ... (17 skills adicionales)
-├── opencode.json            # Configuración de permisos
+│       ├── el-maestro/SKILL.md
+│       ├── bug-doctor/SKILL.md
+│       ├── el-de-las-gafas/SKILL.md
+│       ├── las-manos/SKILL.md
+│       ├── improve-codebase-architecture/SKILL.md
+│       ├── ddd-context-mapping/SKILL.md
+│       ├── ddd-strategic-design/SKILL.md
+│       ├── senior-devops/SKILL.md
+│       ├── dependency-auditor/SKILL.md
+│       ├── env-secrets-manager/SKILL.md
+│       ├── incident-commander/SKILL.md
+│       ├── git-worktree-manager/SKILL.md
+│       ├── skill-security-auditor/SKILL.md
+│       ├── git-guardrails/SKILL.md
+│       ├── setup-pre-commit/SKILL.md
+│       └── ... (17 skills complementarias)
+├── opencode.json
 └── README.md
 ```
 
-### Disponibilidad Global
-
-Para que las skills y agentes estén disponibles en **todos** tus proyectos, copia el contenido de `.opencode/` a `~/.config/opencode/`:
-
-```bash
-cp -r .opencode/skills/* ~/.config/opencode/skills/
-cp -r .opencode/agents/* ~/.config/opencode/agents/
-```
-
-OpenCode carga skills y agentes desde:
-1. **`.opencode/` del proyecto** (específico del proyecto, tiene prioridad)
-2. **`~/.config/opencode/`** (global, disponible en todos los proyectos)
-
 ---
-
-## Formato de los Archivos
-
-### Skill: `SKILL.md`
-
-Cada skill vive en su propio directorio bajo `.opencode/skills/<nombre>/` con un archivo `SKILL.md`. El formato incluye frontmatter YAML:
-
-```yaml
----
-name: nombre-de-la-skill
-description: Qué hace y cuándo usarla
-license: MIT
-compatibility: opencode
----
-
-# Título de la Skill
-
-Instrucciones completas para el modelo...
-```
-
-**Reglas**:
-- El directorio se nombra igual que la skill
-- El archivo debe llamarse exactamente `SKILL.md`
-- El frontmatter es obligatorio: `name`, `description`, `license`, `compatibility`
-- Las skills se cargan al inicio de la conversación mediante la herramienta `skill`
-
-### Agent: `.md` con frontmatter
-
-Cada agente vive en `.opencode/agents/<nombre>.md`. El formato incluye frontmatter YAML con `mode: subagent`:
-
-```yaml
----
-description: Descripción de cuándo usar este agente
-mode: subagent
----
-
-# Nombre del Agente
-
-Instrucciones completas de personalidad, misión, reglas y flujo de trabajo...
-```
-
-**Reglas**:
-- El archivo se nombra igual que el agente: `el-maestro.md`
-- `mode: subagent` es obligatorio para que OpenCode lo reconozca como agente autónomo
-- Los agentes se invocan con `@nombre-del-agente` en el chat
-
-### Configuración: `opencode.json`
-
-Controla los permisos de las skills:
-
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "permission": {
-    "skill": {
-      "*": "allow"
-    }
-  }
-}
-```
-
----
-
-## Cómo se Usan
-
-Hay tres formas de invocar skills y agentes en OpenCode:
-
-| Método | Sintaxis | Aplica a | Ejemplo |
-|--------|----------|----------|---------|
-| **@mención** | `@el-maestro` | Agents | `@el-maestro implementa login con JWT` |
-| **/comando** | `/el-maestro` | Skills y Agents | `/bug-doctor` |
-| **Lenguaje natural** | Describir la tarea | Skills | "Necesito diagnosticar un bug intermitente" |
-
-### Diferencia clave: Skill vs Agent
-
-| | **Skill** | **Agent** |
-|---|---|---|
-| **Propósito** | Instrucciones para Plan/Build | Subagente autónomo con personalidad |
-| **Invocación** | `/skill` o lenguaje natural | `@agente` |
-| **Contexto** | Se inyecta en la conversación actual | Ejecuta en un contexto aislado |
-| **Archivo** | `.opencode/skills/<nombre>/SKILL.md` | `.opencode/agents/<nombre>.md` |
-
-Las 3 skills principales existen en **ambos formatos** — como skill (para usar con `/el-maestro` o lenguaje natural) y como agent (para usar con `@el-maestro`). Esto permite máxima flexibilidad.
-
----
-
 
 ## Skills Complementarias
 
-Además de las 3 principales, este repo incluye 17 skills adicionales para diferentes especialidades:
+Además de las 4 principales y sus 11 sub-skills especializadas, este repo incluye 17 skills adicionales:
 
 | Skill | Especialidad |
 |-------|-------------|
@@ -293,58 +225,78 @@ Además de las 3 principales, este repo incluye 17 skills adicionales para difer
 | `sre` | SLOs, error budgets, observabilidad |
 | `technical-writer` | Documentación para desarrolladores |
 
-Cada una sigue el mismo formato `SKILL.md` y puede copiarse a `~/.config/opencode/skills/` para disponibilidad global.
+**Total: 4 agentes principales + 11 sub-agentes especializados + 17 skills complementarias = 32 skills/agentes.**
+
+---
+
+## Formato de los Archivos
+
+### Skill: `SKILL.md`
+
+```yaml
+---
+name: nombre-de-la-skill
+description: Qué hace y cuándo usarla
+license: MIT
+compatibility: opencode
+---
+
+# Título de la Skill
+
+Instrucciones completas para el modelo...
+```
+
+### Agent: `.md` con frontmatter
+
+```yaml
+---
+description: Descripción de cuándo usar este agente
+mode: subagent
+---
+
+# Nombre del Agente
+
+Instrucciones completas de personalidad, misión, reglas y flujo de trabajo...
+```
+
+---
+
+## Cómo se Usan
+
+| Método | Sintaxis | Aplica a | Ejemplo |
+|--------|----------|----------|---------|
+| **@mención** | `@las-manos` | Agents | `@las-manos configura CI/CD` |
+| **/comando** | `/las-manos` | Skills y Agents | `/skill-security-auditor` |
+| **Lenguaje natural** | Describir la tarea | Skills | "Necesito auditar las dependencias" |
 
 ---
 
 ## Cómo Replicar Esto en Tu Proyecto
 
-### Paso 1: Crear la estructura
-
 ```bash
-mkdir -p .opencode/skills .opencode/agents
+# Clonar este repo
+git clone <this-repo> /tmp/etc-cuarteto
+
+# Copiar agents y skills a tu proyecto
+cp /tmp/etc-cuarteto/.opencode/agents/* tu-proyecto/.opencode/agents/
+cp -r /tmp/etc-cuarteto/.opencode/skills/* tu-proyecto/.opencode/skills/
+
+# (Opcional) Disponibilidad global
+cp /tmp/etc-cuarteto/.opencode/agents/* ~/.config/opencode/agents/
+cp -r /tmp/etc-cuarteto/.opencode/skills/* ~/.config/opencode/skills/
 ```
 
-### Paso 2: Copiar las skills deseadas
+Luego en OpenCode:
 
-```bash
-# Desde este repo
-cp -r .opencode/skills/el-maestro tu-proyecto/.opencode/skills/
-cp -r .opencode/skills/bug-doctor tu-proyecto/.opencode/skills/
-cp -r .opencode/skills/el-de-las-gafas tu-proyecto/.opencode/skills/
-
-# Copiar los agents
-cp .opencode/agents/el-maestro.md tu-proyecto/.opencode/agents/
-cp .opencode/agents/bug-doctor.md tu-proyecto/.opencode/agents/
-cp .opencode/agents/el-de-las-gafas.md tu-proyecto/.opencode/agents/
 ```
-
-### Paso 3: Configurar opencode.json
-
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "permission": {
-    "skill": {
-      "*": "allow"
-    }
-  }
-}
+@el-maestro implementa login con JWT
+@bug-doctor diagnostica el error 500 intermitente
+@el-de-las-gafas revisa mi modelo de dominio
+@las-manos configura el pipeline de CI/CD
 ```
-
-### Paso 4: (Opcional) Disponibilidad global
-
-```bash
-cp -r .opencode/skills/* ~/.config/opencode/skills/
-cp -r .opencode/agents/* ~/.config/opencode/agents/
-```
-
-### Paso 5: Usar en OpenCode
-
-Abre OpenCode en tu proyecto y escribe `@el-maestro` para iniciar un ciclo TDD, `@bug-doctor` para diagnosticar un bug, o `@el-de-las-gafas` para estresar tu modelo de dominio.
 
 ---
 
 ## Licencia
 
-MIT — heredada de [morodomi/tdd-skills](https://github.com/morodomi/tdd-skills) y [mattpocock/skills](https://github.com/mattpocock/skills).
+MIT — heredada de [morodomi/tdd-skills](https://github.com/morodomi/tdd-skills), [mattpocock/skills](https://github.com/mattpocock/skills), y [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills).
