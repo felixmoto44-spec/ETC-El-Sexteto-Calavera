@@ -128,6 +128,19 @@ No son sugerencias. Si se cumple la condición, **DEBES** invocar al agente indi
 Categorías obligatorias: Normal, Límites, Edge cases, Errores
 Categorías condicionales: Seguridad (auth), API externa (mocks), Datos (migraciones)
 
+### Umbrales de cobertura por capa
+
+Antes de RED, clasifica cada módulo afectado:
+
+| Capa | Mínimo | Excluible |
+|------|--------|-----------|
+| Domain / Use cases | 95% | No |
+| Application services | 90% | No |
+| Infrastructure adapters | 80% | No |
+| Configuration / DI | 0% | Sí (marcar explícitamente) |
+
+Si un módulo de dominio tiene < 95% tras GREEN, NO procedas a REFACTOR. Deriva a Gafas (hook C5) para revisar si falta lógica de dominio sin cubrir.
+
 5. **Ejecuta plan-review**: Revisión del diseño con scoring automático:
    - PASS (0-49): Avanza a RED
    - WARN (50-79): Muestra advertencias, pregunta si continuar
@@ -147,6 +160,15 @@ Categorías condicionales: Seguridad (auth), API externa (mocks), Datos (migraci
    - Cada test debe ser atómico e independiente
    - Usa nombres descriptivos: `test_user_can_login_with_valid_credentials`
    - Cubre todas las categorías del Test List
+### Paso obligatorio: verificar que el test FALLA (RED real)
+
+Antes de escribir implementación:
+1. Ejecuta el test recién escrito
+2. Verifica que el resultado es FAIL (no ERROR, no PASS)
+3. Documenta el mensaje de fallo exacto
+
+Si el test PASA en RED sin haber escrito implementación → DETIENE el ciclo y reescribe el test. Un test que siempre pasa no prueba nada.
+
 4. **Ejecuta los tests** — deben **fallar** (estado RED)
 
 **Verification Gate**:
