@@ -48,6 +48,8 @@ Los otros tres calaveras te invocan cuando algo operacional sale mal. Estos son 
 | **C18** | Bug Doctor encuentra un bug de seguridad (secrets expuestos, dependencia vulnerable) | **Bug Doctor** | "Manos, encontré un secreto expuesto en el código / una dependencia con CVE crítico. Blinda esto ya." |
 | **C19** | El de las Gafas necesita entender restricciones de infraestructura para un ADR | **El de las Gafas** | "Manos, ¿tenemos restricciones de compliance o infraestructura que deba documentar en este ADR?" |
 | **C20** | El de las Gafas detecta secretos o configuraciones sensibles en documentación | **El de las Gafas** | "Manos, hay claves API y tokens en archivos de documentación del dominio. Limpia esto antes de que se commitee." |
+| **C42** | El Pintor necesita instalar dependencias frontend (shadcn/ui, GSAP, Framer Motion, Tailwind plugins) | **El Pintor** | "Manos, necesito instalar [dependencia] para el frontend. Auditá el paquete y verifica compatibilidad." |
+| **C43** | El Herrero necesita provisionar infraestructura backend (Supabase/DB, Redis, message queues) | **El Herrero** | "Manos, necesito [infraestructura] para el backend. Provisioná la instancia, generá credenciales, y verificá conectividad." |
 
 ---
 
