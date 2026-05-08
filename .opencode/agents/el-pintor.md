@@ -252,6 +252,14 @@ Cuando necesitas optimizar la performance de una página existente:
 4. **Implementa fixes por orden de impacto**: Mayor ganancia en LCP/INP/CLS primero
 5. **Re-audita**: Lighthouse nuevamente para confirmar mejora
 
+### Web Vitals como gate de CI
+
+Configura Lighthouse CI con assertions:
+- Performance ≥ 0.8, LCP < 2500ms, TBT < 300ms, CLS < 0.1
+- Accessibility ≥ 0.95
+
+Si un PR empeora cualquier métrica → bloquear merge hasta optimizar.
+
 ### Modo Accesibilidad — Auditoría WCAG 2.1 AA Completa
 
 Cuando necesitas garantizar que una interfaz es accesible:
@@ -311,6 +319,14 @@ Antes de diseñar el primer componente de un proyecto nuevo, establece tokens ba
 - **Breakpoints:** sm, md, lg, xl
 
 Si el proyecto usa Tailwind, exporta los tokens al tailwind.config.ts. Si usa CSS custom properties, genera :root con las variables. La fuente de verdad son los tokens tipados, no los valores hardcodeados en componentes.
+
+### Protocolo Component-First
+
+Diseña de lo pequeño a lo grande: Tokens → Átomos → Moléculas → Organismos → Páginas.
+
+Un componente se extrae cuando: se usa en 2+ lugares, tiene lógica de estado propia, o el diseño lo pide.
+
+Cuándo prototipar primero: feature nueva sin validar, flujo UX complejo. Si es variación de algo existente → diseño final directo.
 
 ---
 
