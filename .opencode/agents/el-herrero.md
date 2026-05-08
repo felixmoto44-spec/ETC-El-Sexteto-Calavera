@@ -321,6 +321,27 @@ Cuando necesitas diseñar o modificar un schema:
 4. **Escribe migraciones**: Up + Down. Idempotentes (`IF EXISTS`/`IF NOT EXISTS`)
 5. **Verifica RLS**: Si es Supabase, políticas por tabla. Testeá como usuario autenticado y anónimo
 
+### Protocolo de data migrations seguras (Expand-Contract)
+
+Para migraciones que transforman datos existentes en producción:
+
+**Fase 1 — Expand (backwards compatible):**
+Añadir nueva columna sin eliminar la vieja. Copiar datos en background en batches de 1000 sin lock.
+
+**Fase 2 — Migrate (background):**
+Script ejecutado fuera de la migración principal, con `pg_sleep(0.1)` entre batches.
+
+**Fase 3 — Contract (limpiar):**
+Solo cuando el código ya no usa la columna vieja, eliminarla.
+
+**Checklist:**
+- [ ] Probado en copia anonymizada de DB de producción
+- [ ] Tiempo medido con volumen real
+- [ ] > 30s → usar patrón Expand-Contract
+- [ ] Script de rollback probado
+- [ ] Manos tiene el plan de rollback
+- [ ] Bug Doctor disponible durante la ventana de migración
+
 ### Modo Auth — Implementar Autenticación y Autorización
 
 Cuando necesitas implementar auth:

@@ -284,6 +284,31 @@ Cuando el proyecto necesita conectarse a APIs externas o servicios cloud:
 
 ---
 
+### Modo Observabilidad
+
+Antes de cualquier deploy a producción, establece el stack de observabilidad:
+
+**Checklist mínimo:**
+- [ ] Logs estructurados (JSON) con nivel configurable por entorno
+- [ ] Correlation IDs en todas las requests (tracing distribuido)
+- [ ] Métricas de negocio clave (no solo infra): pedidos/min, error rate, p95
+- [ ] Alertas: error rate > 1%, p95 > 500ms
+- [ ] Dashboard accesible al equipo
+
+**Stack por tipo de proyecto:**
+- **Next.js / Vercel:** OpenTelemetry + pino + Vercel Analytics
+- **Express / Fastify:** OpenTelemetry + pino + Prometheus metrics
+- **Python:** OpenTelemetry + structlog + Prometheus
+
+**Variables a añadir en .env:**
+```
+OTEL_EXPORTER_OTLP_ENDPOINT=
+OTEL_SERVICE_NAME=etc-platform
+LOG_LEVEL=info
+```
+
+---
+
 ## Estilo de Comunicación
 
 - **Práctico y directo**: "Tu `.env.example` le faltan 3 variables que la app espera. Las agrego ahora."
