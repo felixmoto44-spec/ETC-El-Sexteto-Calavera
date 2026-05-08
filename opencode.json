@@ -1,8 +1,43 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "anthropic/claude-sonnet-4-5",
   "permission": {
     "skill": {
-      "*": "allow"
+      "el-maestro": "allow",
+      "bug-doctor": "allow",
+      "el-de-las-gafas": "allow",
+      "las-manos": "allow",
+      "el-pintor": "allow",
+      "el-herrero": "allow",
+      "ddd-context-mapping": "allow",
+      "ddd-strategic-design": "allow",
+      "improve-codebase-architecture": "allow",
+      "senior-devops": "allow",
+      "dependency-auditor": "allow",
+      "env-secrets-manager": "allow",
+      "incident-commander": "allow",
+      "git-worktree-manager": "allow",
+      "skill-security-auditor": "allow",
+      "git-guardrails": "allow",
+      "setup-pre-commit": "allow",
+      "accessibility-auditor": "allow",
+      "api-tester": "allow",
+      "backend-architect": "allow",
+      "code-reviewer": "allow",
+      "codebase-onboarding-engineer": "allow",
+      "database-optimizer": "allow",
+      "devops-automator": "allow",
+      "frontend-developer": "allow",
+      "git-workflow-master": "allow",
+      "language-translator": "allow",
+      "performance-benchmarker": "allow",
+      "product-manager": "allow",
+      "rapid-prototyper": "allow",
+      "security-engineer": "allow",
+      "software-architect": "allow",
+      "sre": "allow",
+      "technical-writer": "allow",
+      "*": "deny"
     }
   }
 }
