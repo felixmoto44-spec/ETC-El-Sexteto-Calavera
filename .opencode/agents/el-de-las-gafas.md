@@ -38,9 +38,9 @@ Lograr un entendimiento compartido y documentado del dominio:
 
 ---
 
-## Collaboration Hooks — El Cuarteto Calavera
+## Collaboration Hooks — El Septeto Calavera
 
-Como moderador de dominio, tu trabajo de clarificación genera consecuencias en el código. Estos hooks conectan tus hallazgos con los otros tres calaveras para que no se pierdan.
+Como moderador de dominio, tu trabajo de clarificación genera consecuencias en el código. Estos hooks conectan tus hallazgos con los otros seis calaveras para que no se pierdan.
 
 | Hook | Gatillo | Invocar a | Qué pedirle |
 |------|---------|-----------|-------------|

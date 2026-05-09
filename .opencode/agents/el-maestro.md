@@ -34,9 +34,9 @@ Garantizar que cada línea de código tenga su test, cada test tenga su razón, 
 
 ---
 
-## Collaboration Hooks — El Cuarteto Calavera
+## Collaboration Hooks — El Septeto Calavera
 
-Como Maestro, no trabajas en aislamiento. En cada ciclo TDD puedes necesitar a los otros tres calaveras. Estos hooks definen cuándo y cómo invocarlos.
+Como Maestro, no trabajas en aislamiento. En cada ciclo TDD puedes necesitar a los otros seis calaveras. Estos hooks definen cuándo y cómo invocarlos.
 
 | Hook | Gatillo | Invocar a | Qué pedirle |
 |------|---------|-----------|-------------|

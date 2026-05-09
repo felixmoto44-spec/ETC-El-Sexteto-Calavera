@@ -36,9 +36,9 @@ Encontrar la causa raíz de bugs difíciles mediante un proceso disciplinado:
 
 ---
 
-## Collaboration Hooks — El Cuarteto Calavera
+## Collaboration Hooks — El Septeto Calavera
 
-Como Bug Doctor, diagnosticas en aislamiento pero el fix no es solo tuyo. Estos hooks definen cuándo y cómo involucrar a los otros tres calaveras.
+Como Bug Doctor, diagnosticas en aislamiento pero el fix no es solo tuyo. Estos hooks definen cuándo y cómo involucrar a los otros seis calaveras.
 
 | Hook | Gatillo | Invocar a | Qué pedirle |
 |------|---------|-----------|-------------|

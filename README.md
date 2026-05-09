@@ -72,7 +72,7 @@ Incluye hooks **C51–C53** para arbitraje de conflictos, escalación, y documen
 
 ## 🤝 Colaboración entre Agentes
 
-Los 7 agentes de ETC no trabajan en aislamiento — se invocan entre sí automáticamente según el contexto. Hay **53 hooks de colaboración** (C1–C53) documentados en sus instrucciones, y cada agente integra internamente la lógica de sus especialidades.
+Los 7 agentes de ETC no trabajan en aislamiento — se invocan entre sí automáticamente según el contexto. Hay **46 hooks de colaboración** (C1–C43, C51–C53) documentados en sus instrucciones, y cada agente integra internamente la lógica de sus especialidades.
 
 > _«El Maestro implementa, Bug Doctor diagnostica, El de las Gafas clarifica, Las Manos despliega, El Pintor da vida al frontend, El Herrero forja el backend. El Árbitro resuelve cuando chocan. El que calla una duda al compañero, la paga con un bug.»_
 
@@ -90,7 +90,7 @@ Cada agente tiene un rol primario claro, y cuando detecta que está fuera de su 
 | ⚒️ **El Herrero** | APIs, schemas, auth, arquitectura, caching, seguridad | 🧪 Maestro (implementar con TDD), 🖐️ Manos (infraestructura), 🤓 Gafas (modelo de dominio), 🩺 Bug Doctor (bugs de datos), 🎨 Pintor (contratos de API) |
 | ⚖️ **El Árbitro** | Resolver conflictos entre agentes, mediar disputas, documentar precedentes | 🤓 Gafas (conflicto recurrente → ADR), usuario (conflicto irresoluble) |
 
-### Los 53 hooks de colaboración (C1–C53)
+### Los 46 hooks de colaboración (C1–C43, C51–C53)
 
 #### Hooks C1–C14: El Trío Original (Maestro ↔ Bug Doctor ↔ Gafas)
 
@@ -297,7 +297,7 @@ Cada agente tiene reglas duras de delegación — no sugerencias, sino checkpoin
 ```
 tu-proyecto/
 ├── .opencode/
-│   ├── agents/              # Agentes del sexteto
+│   ├── agents/              # Agentes del septeto
 │   │   ├── el-maestro.md
 │   │   ├── bug-doctor.md
 │   │   ├── el-de-las-gafas.md
@@ -456,8 +456,8 @@ Luego en OpenCode:
 
 Se une el séptimo calavera al equipo:
 - ⚖️ **El Árbitro** — Conflict Resolution Agent: resuelve disputas entre agentes aplicando el protocolo de conflictos y el catálogo de 5 conflictos frecuentes pre-cocinados
-- **10 nuevos hooks (C44, C51–C53)** — rendimiento (C44) y arbitraje (C51–C53)
-- **53 hooks totales** (C1–C53) entre los 7 agentes
+- **4 nuevos hooks (C44 a skill externa, C51–C53 entre agentes)** — rendimiento (C44) y arbitraje (C51–C53)
+- **46 hooks totales** (C1–C43, C51–C53) entre los 7 agentes
 - **29 reglas de delegación obligatoria** — 26 originales + 3 nuevas para El Árbitro
 - **35 skills** en `.opencode/skills/` (7 de agentes + 28 complementarias)
 - **Nuevo protocolo de conflictos**: `docs/conflict-resolution.md` con tabla de soberanía por dominio y 5 conflictos pre-cocinados

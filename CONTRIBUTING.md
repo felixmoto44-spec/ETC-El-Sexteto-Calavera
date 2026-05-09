@@ -1,19 +1,19 @@
-# Contribuir a ETC — El Sexteto Calavera
+# Contribuir a ETC — El Septeto Calavera
 
 ¡Bienvenido! Este documento explica cómo añadir agentes, skills, o proponer nuevos hooks.
 
 ## Antes de contribuir
 
-1. Lee el README completo para entender la arquitectura del sexteto
+1. Lee el README completo para entender la arquitectura del septeto
 2. Asegúrate de que tu contribución no duplica funcionalidad existente
 3. Abre un Issue primero para discutir cambios grandes
 
 ## Cómo añadir un nuevo agente
 
 Un agente nuevo debe justificarse como un rol que:
-- No está cubierto por ninguno de los 6 agentes actuales
+- No está cubierto por ninguno de los 7 agentes actuales
 - Tiene un conjunto de responsabilidades cohesivo y delimitado
-- Puede colaborar con el sexteto mediante hooks documentados
+- Puede colaborar con el septeto mediante hooks documentados
 
 ### Plantilla de agente
 
@@ -139,7 +139,7 @@ version: 1.0.0
 1. **Es obligatorio, no opcional** — el agente siempre debe derivar en ese caso
 2. **Tiene un disparador claro** — se puede describir en una frase sin ambigüedad
 3. **Produce un resultado concreto** — se sabe exactamente qué pasa después
-4. **No duplica un hook existente** — revisa la tabla C1–C43 antes de proponer
+4. **No duplica un hook existente** — revisa la tabla C1–C46 antes de proponer
 
 ### Plantilla de propuesta de hook
 
@@ -177,4 +177,4 @@ Abre un Issue con el título: `[Hook] CXX: AgentA → AgentB — descripción br
 
 ## Código de conducta
 
-Mantén el espíritu del sexteto: cada agente tiene su rol, cada contribución tiene su lugar. Si no sabes dónde encaja algo, abre un Issue primero.
+Mantén el espíritu del septeto: cada agente tiene su rol, cada contribución tiene su lugar. Si no sabes dónde encaja algo, abre un Issue primero.

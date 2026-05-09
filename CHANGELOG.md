@@ -10,9 +10,9 @@ Todos los cambios notables se documentan en este fichero.
 - ⚖️ **El Árbitro** — Conflict Resolution Agent. Resuelve disputas entre agentes aplicando el protocolo de conflictos.
 
 ### Hooks nuevos
-- **C44:** performance benchmarking (El Maestro)
-- **C51–C53:** arbitraje de conflictos y documentación de precedentes
-- **Total: 53 hooks** (C1–C53)
+- **C44:** invoca /performance-benchmarker (skill externa, no agente)
+- **C51–C53:** arbitraje de conflictos y documentación de precedentes (3 hooks entre agentes)
+- **Total: 46 hooks** (C1–C43, C51–C53)
 
 ### Nuevas skills
 - `el-arbitro/SKILL.md`
@@ -20,7 +20,7 @@ Todos los cambios notables se documentan en este fichero.
 
 ### Modificado
 - Los 6 agentes existentes ahora invocan a El Árbitro (C51) ante conflictos
-- README.md: El Sexteto → El Septeto Calavera (7 agentes, 35 skills, 53 hooks, 29 reglas)
+- README.md: El Sexteto → El Septeto Calavera (7 agentes, 35 skills, 46 hooks, 29 reglas)
 - `docs/conflict-resolution.md`: añadida referencia a El Árbitro como implementador del protocolo
 
 ### Infraestructura
