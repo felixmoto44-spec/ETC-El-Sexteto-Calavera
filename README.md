@@ -74,7 +74,9 @@ Incluye hooks **C51–C53** para arbitraje de conflictos, escalación, y documen
 
 ## 🤝 Colaboración entre Agentes
 
-Los 7 agentes de ETC no trabajan en aislamiento — se invocan entre sí automáticamente según el contexto. Hay **49 hooks de colaboración** (C1–C46, C54–C55) documentados en sus instrucciones, y cada agente integra internamente la lógica de sus especialidades.
+Los 7 agentes de ETC no trabajan en aislamiento — se invocan entre sí automáticamente según el contexto. Hay **50 hooks de colaboración** (C1–C46, C54–C56) documentados en sus instrucciones, y cada agente integra internamente la lógica de sus especialidades.
+
+Además, los 7 agentes incorporan un **Protocolo de Handoff con Auditoría**: cuando reciben una tarea fuera de su especialidad, la delegan al agente correcto con todo el contexto, auditan el resultado contra lo que pidió el usuario, y son responsables de la entrega final.
 
 > _«El Maestro implementa, Bug Doctor diagnostica, El de las Gafas clarifica, Las Manos despliega, El Pintor da vida al frontend, El Herrero forja el backend. El Árbitro resuelve cuando chocan. El que calla una duda al compañero, la paga con un bug.»_
 
@@ -92,7 +94,7 @@ Cada agente tiene un rol primario claro, y cuando detecta que está fuera de su 
 | ⚒️ **El Herrero** | APIs, schemas, auth, arquitectura, caching, seguridad | 🧪 Maestro (implementar con TDD), 🖐️ Manos (infraestructura), 🤓 Gafas (modelo de dominio), 🩺 Bug Doctor (bugs de datos), 🎨 Pintor (contratos de API) |
 | ⚖️ **El Árbitro** | Resolver conflictos entre agentes, mediar disputas, documentar precedentes | 🤓 Gafas (conflicto recurrente → ADR), usuario (conflicto irresoluble) |
 
-### Los 49 hooks de colaboración (C1–C46, C54–C55)
+### Los 50 hooks de colaboración (C1–C46, C54–C56)
 
 #### Hooks C1–C14: El Trío Original (Maestro ↔ Bug Doctor ↔ Gafas)
 
@@ -181,6 +183,12 @@ Cada agente tiene un rol primario claro, y cuando detecta que está fuera de su 
 |---|--------|---------|----------|-----------|
 | C54 | Cualquiera | Necesita buscar información actualizada en internet | 🤓 Gafas | Investigación multicanal con resultados comparados y nivel de confianza |
 | C55 | 🤓 Gafas | Investigación revela información relevante para el equipo | ✍️ Gafas | Mini-ADR o nota en CONTEXT.md documentada |
+
+#### Hook C56: Handoff con Auditoría — Aplica a los 7 agentes
+
+| # | Inicia | Gatillo | Invoca a | Resultado |
+|---|--------|---------|----------|-----------|
+| C56 | Cualquiera | Agente delegó tarea y especialista reportó resultado | Agente que delegó | Auditoría: ¿cumple lo que pidió el usuario? Si no → ajustes o arbitraje |
 
 ### Lógica especializada absorbida
 
@@ -305,6 +313,7 @@ Cada agente tiene reglas duras de delegación — no sugerencias, sino checkpoin
 | 🎨 Pintor | → Gafas | Necesita búsqueda web |
 | ⚒️ Herrero | → Gafas | Necesita búsqueda web |
 | ⚖️ Árbitro | → Gafas | Necesita búsqueda web |
+| 🧪🩺🤓🖐️🎨⚒️⚖️ **Todos** | **Responsabilidad del handoff** | **Al delegar, auditas y respondes por el resultado final** |
 
 ---
 
@@ -470,6 +479,14 @@ Luego en OpenCode:
 ---
 
 ## 📦 Releases
+
+### v2.3.0 — Protocolo de Handoff con Auditoría (2026-05-09)
+
+- 📋 **Hook C56**: todos los agentes auditan el resultado de las tareas que delegaron
+- 📋 **Protocolo de Handoff con Auditoría**: cada agente recibe → delega al especialista → espera → audita → presenta
+- **Regla de responsabilidad**: el agente que delega es dueño del resultado hasta que el usuario lo aprueba
+- **50 hooks totales** (C1–C46, C54–C56) entre los 7 agentes
+- **38 skills** en `.opencode/skills/` (7 de agentes + 31 complementarias)
 
 ### v2.2.0 — Investigación Web Centralizada (2026-05-09)
 

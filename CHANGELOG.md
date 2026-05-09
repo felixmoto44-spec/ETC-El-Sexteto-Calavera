@@ -4,6 +4,24 @@ Todos los cambios notables se documentan en este fichero.
 
 ---
 
+## [2.3.0] — 2026-05-09 — Protocolo de Handoff con Auditoría
+
+### Añadido
+- 📋 Hook C56 en los 7 agentes: Protocolo de Handoff con Auditoría
+- Cada agente ahora: recibe → delega al especialista → espera → **audita** el resultado → presenta
+- Regla de responsabilidad: el agente que delega es dueño del resultado hasta que el usuario lo aprueba
+
+### Modificado
+- Los 7 agentes: nueva sección "Protocolo de Handoff con Auditoría" después de Reglas de Delegación
+- README.md: 50 hooks totales (C1–C46, C54–C56)
+
+### Total
+- **50 hooks** (C1–C46, C54–C56)
+- **38 skills** (7 de agentes + 31 complementarias)
+- **7 agentes**
+
+---
+
 ## [2.2.0] — 2026-05-09 — Investigación Web Centralizada
 
 ### Añadido

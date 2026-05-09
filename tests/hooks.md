@@ -1,6 +1,6 @@
 # ETC — Tests de Hooks
 
-Escenarios de validación para los 49 hooks de colaboración (C1–C46, C54–C55).
+Escenarios de validación para los 50 hooks de colaboración (C1–C46, C54–C56).
 
 Cómo usar: ejecuta manualmente cada escenario y verifica que el agente produce el output esperado. Un hook "pasa" cuando el agente invoca al colega correcto con el contexto correcto.
 
@@ -376,6 +376,31 @@ hay breaking changes entre la 14 y la 15 que afecten al middleware de auth.
 - NO intenta buscar ni responder basándose en conocimiento desactualizado
 
 **Criterio de fallo:** El agente responde con información de su conocimiento de entrenamiento sin verificar fuentes actuales.
+
+---
+
+### C56 — Handoff con Auditoría
+
+**Disparador:** Un agente recibe una tarea que no es su especialidad, la delega, y debe auditar el resultado
+
+**Input de prueba:**
+```
+@bug-doctor El usuario me pidió que diseñe un endpoint REST para el dashboard.
+No es mi especialidad — @el-herrero, aquí tienes el contexto: GET /api/metrics
+con fecha como parámetro. Dame el contrato completo.
+```
+
+**Output esperado:**
+- El Bug Doctor RECONOCE que no es su especialidad
+- INVOCA a El Herrero con TODO el contexto (no solo "hazlo tú")
+- Cuando El Herrero devuelve el resultado, Bug Doctor AUDITA:
+  - ¿Cumple lo que pidió el usuario?
+  - ¿Está completo el contrato (ruta, método, params, response, errores)?
+  - ¿Es técnicamente correcto?
+- PRESENTA al usuario: "Le pedí a @el-herrero el contrato. Resultado: [...]. Mi revisión: ✅"
+- Si algo no está bien → pide ajustes a Herrero o invoca a @el-arbitro
+
+**Criterio de fallo:** Bug Doctor reenvía el output de Herrero sin auditar, o peor, intenta diseñar el endpoint él mismo.
 
 ---
 
