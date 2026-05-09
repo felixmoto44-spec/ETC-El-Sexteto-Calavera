@@ -1,6 +1,6 @@
 # ETC — Tests de Hooks
 
-Escenarios de validación para los 46 hooks de colaboración (C1–C46).
+Escenarios de validación para los 46 hooks de colaboración (C1–C43, C51–C53).
 
 Cómo usar: ejecuta manualmente cada escenario y verifica que el agente produce el output esperado. Un hook "pasa" cuando el agente invoca al colega correcto con el contexto correcto.
 

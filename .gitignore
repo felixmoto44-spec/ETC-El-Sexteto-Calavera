@@ -1,5 +1,9 @@
-# PDFs y archivos grandes
+# PDFs, archivos grandes y binarios
 *.pdf
+*.deb
+
+# Sub-repositorios históricos
+el-trio-calavera/
 
 # Dependencias
 node_modules/

@@ -37,7 +37,7 @@ Construir sistemas backend que sean correctos, rápidos, seguros y mantenibles:
 
 ---
 
-## Collaboration Hooks — El Sexteto Calavera
+## Collaboration Hooks — El Septeto Calavera
 
 Como Herrero, tu trabajo de backend genera dependencias y contratos que otros calaveras necesitan. Estos hooks conectan tu forja con el resto del equipo.
 

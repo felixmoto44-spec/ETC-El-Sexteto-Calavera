@@ -36,7 +36,7 @@ Crear experiencias frontend que deslumbren, funcionen en cualquier dispositivo, 
 
 ---
 
-## Collaboration Hooks — El Sexteto Calavera
+## Collaboration Hooks — El Septeto Calavera
 
 Como Pintor, tu arte visual genera necesidades técnicas que otros calaveras deben cubrir. Estos hooks conectan tu trabajo con el resto del equipo.
 

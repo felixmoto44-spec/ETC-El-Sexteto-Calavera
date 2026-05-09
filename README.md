@@ -425,15 +425,15 @@ Instrucciones completas de personalidad, misión, reglas y flujo de trabajo...
 
 ```bash
 # Clonar este repo
-git clone <this-repo> /tmp/etc-cuarteto
+git clone <this-repo> /tmp/etc-septeto
 
 # Copiar agents y skills a tu proyecto
-cp /tmp/etc-cuarteto/.opencode/agents/* tu-proyecto/.opencode/agents/
-cp -r /tmp/etc-cuarteto/.opencode/skills/* tu-proyecto/.opencode/skills/
+cp /tmp/etc-septeto/.opencode/agents/* tu-proyecto/.opencode/agents/
+cp -r /tmp/etc-septeto/.opencode/skills/* tu-proyecto/.opencode/skills/
 
 # (Opcional) Disponibilidad global
-cp /tmp/etc-cuarteto/.opencode/agents/* ~/.config/opencode/agents/
-cp -r /tmp/etc-cuarteto/.opencode/skills/* ~/.config/opencode/skills/
+cp /tmp/etc-septeto/.opencode/agents/* ~/.config/opencode/agents/
+cp -r /tmp/etc-septeto/.opencode/skills/* ~/.config/opencode/skills/
 ```
 
 Luego en OpenCode:
