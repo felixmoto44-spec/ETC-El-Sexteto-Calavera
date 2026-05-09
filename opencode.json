@@ -1,6 +1,41 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "instructions": ["prompts/global-instructions.md"],
   "model": "anthropic/claude-sonnet-4-5",
+  "agent": {
+    "build": {
+      "prompt": "{file:./prompts/orchestrator.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "skill": "allow",
+        "task": "allow",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "question": "allow",
+        "todowrite": "deny",
+        "webfetch": "deny"
+      }
+    },
+    "plan": {
+      "prompt": "{file:./prompts/orchestrator.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "skill": "allow",
+        "task": "allow",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "question": "allow",
+        "todowrite": "deny",
+        "webfetch": "deny"
+      }
+    }
+  },
   "permission": {
     "skill": {
       "el-maestro": "allow",
