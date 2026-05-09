@@ -532,6 +532,12 @@ Primera release estable del Cuarteto Calavera:
 
 ---
 
+## 🧩 Proyecto Hermano
+
+[**ETC System Agents**](https://github.com/felixmoto44-spec/ETC-System-Agents) — 7 agentes del sistema que reemplazan a `@explore` y `@general`. Mientras **ETC — El Septeto Calavera** se enfoca en desarrollo de software (TDD, debugging, dominio, infra, frontend, backend, arbitraje), **ETC System Agents** se enfoca en tareas del sistema operativo (exploración, operación, investigación web, instalación, configuración, integración, supervisión).
+
+**Juntos forman 14 agentes** que cubren cualquier tarea que puedas pedirle a OpenCode. Instala ambos proyectos en `~/.config/opencode/agents/` para tener el ecosistema completo.
+
 ## Licencia
 
 MIT — heredada de [morodomi/tdd-skills](https://github.com/morodomi/tdd-skills), [mattpocock/skills](https://github.com/mattpocock/skills), y [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills).
