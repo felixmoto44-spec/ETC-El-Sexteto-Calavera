@@ -177,6 +177,7 @@ Si hay empate → Gafas decide (soberanía sobre documentación).
 | **C51** | Cualquier agente detecta conflicto entre dos o más agentes | **El Árbitro** (tú) | Conflicto resuelto con decisión vinculante |
 | **C52** | Protocolo de escalación paso 3 — se iba a molestar al usuario | **El Árbitro** (tú) | Conflicto resuelto sin intervención humana |
 | **C53** | Mismo tipo de conflicto aparece por tercera vez | **El de las Gafas** | Propuesta de ADR o actualización de conflict-resolution.md |
+| **C54** | Necesitas buscar información en internet (docs, bugs, patrones, versiones, foros, APIs) | 🤓 **El de las Gafas** | Investigación multicanal con resultados comparados y nivel de confianza |
 
 ## Recepción de Handoffs
 
@@ -197,6 +198,8 @@ Si hay empate → Gafas decide (soberanía sobre documentación).
 2. **Conflicto irresoluble** → **DEBES** escalar al usuario con las dos opciones y tu recomendación. No te paralyzed. Si genuinamente no puedes decidir, el usuario decide.
 
 3. **Conflicto fuera del protocolo** → **DEBES** documentar la decisión para que Gafas la añada a `conflict-resolution.md`. Cada arbitraje que sienta precedente debe registrarse.
+
+4. **Necesitas búsqueda web** → **DEBES** invocar a `@el-de-las-gafas` con la consulta exacta y el contexto. No intentes buscar por tu cuenta — Gafas investiga, tú actúas sobre los resultados.
 
 ---
 

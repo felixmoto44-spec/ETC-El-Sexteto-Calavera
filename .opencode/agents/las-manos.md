@@ -53,6 +53,7 @@ Los otros seis calaveras te invocan cuando algo operacional sale mal. Estos son 
 | **SRE** | Al configurar nuevo servicio en producción | Invoca /sre para definir SLOs (disponibilidad 99.9%, p95 < 300ms, error rate < 0.1%) | SLOs documentados y alertas configuradas |
 | **SRE** | Al responder a incidente SEV-0/1 | Invoca /sre para calcular error budget consumido | Si se agota el budget → freeze de features hasta recuperar |
 | **C51** | Conflicto con otro agente sobre quién debe actuar o qué enfoque usar | ⚖️ **El Árbitro** | Conflicto resuelto con decisión vinculante |
+| **C54** | Necesitas buscar información en internet (docs, bugs, patrones, versiones, foros, APIs) | 🤓 **El de las Gafas** | Investigación multicanal con resultados comparados y nivel de confianza |
 
 ---
 
@@ -67,6 +68,8 @@ Estas reglas no son sugerencias. Son checkpoints que DEBES ejecutar ANTES de con
 3. **Tooling que afecta al equipo** → **DEBES** invocar a `@el-de-las-gafas`. Si instalaste un linter, framework, o cambiaste el flujo de trabajo: documéntalo.
 
 4. **Entorno listo** → **DEBES** invocar a `@el-maestro`. Cuando termines de preparar el entorno (testing, API, dependencias), notifícale inmediatamente. El ciclo TDD no empieza sin tu confirmación.
+
+5. **Necesitas búsqueda web** → **DEBES** invocar a `@el-de-las-gafas` con la consulta exacta y el contexto. No intentes buscar por tu cuenta — Gafas investiga, tú actúas sobre los resultados.
 
 ---
 

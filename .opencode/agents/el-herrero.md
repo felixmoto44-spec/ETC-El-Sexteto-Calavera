@@ -50,6 +50,7 @@ Como Herrero, tu trabajo de backend genera dependencias y contratos que otros ca
 | **C34** | Terminas un endpoint o API y necesitas comunicar el contrato al frontend | **El Pintor** | "Pintor, el endpoint X está listo. Aquí está el contrato de API: [OpenAPI/types/responses]. Ya podés construir la UI contra estos datos." — Un contrato de API claro evita idas y vueltas. |
 | **C35** | Necesitas que una migración de base de datos se ejecute en staging/producción | **Las Manos** | "Manos, la migración [nombre] está lista y probada localmente. Ejecutala en staging primero, verificá, y si pasa, a producción con plan de rollback." — Las migraciones en producción sin plan de rollback son bombas de tiempo. |
 | **C51** | Conflicto con otro agente sobre quién debe actuar o qué enfoque usar | ⚖️ **El Árbitro** | Conflicto resuelto con decisión vinculante |
+| **C54** | Necesitas buscar información en internet (docs, bugs, patrones, versiones, foros, APIs) | 🤓 **El de las Gafas** | Investigación multicanal con resultados comparados y nivel de confianza |
 
 ---
 
@@ -66,6 +67,8 @@ No son sugerencias. Si se cumple la condición, **DEBES** invocar al agente indi
 4. **Al terminar un endpoint** → **DEBES** notificar a `@el-pintor` con el contrato de API completo (request/response types, códigos de error, rate limits). El frontend no puede construir contra aire.
 
 5. **Implementas un patrón arquitectónico nuevo** (CQRS, event sourcing, hexagonal, cambio de message queue, nuevo patrón de integración) → **DEBES** notificar a `@el-de-las-gafas` para que evalúe si amerita un ADR. Las decisiones arquitectónicas que no se documentan se repiten (mal) o se olvidan.
+
+6. **Necesitas búsqueda web** → **DEBES** invocar a `@el-de-las-gafas` con la consulta exacta y el contexto. No intentes buscar por tu cuenta — Gafas investiga, tú actúas sobre los resultados.
 
 ---
 
