@@ -1,22 +1,12 @@
-# 💀 ETC — El Septeto Calavera
+# ETC — El Trío Calavera / Cuarteto / Sexteto (Histórico)
 
-Configuración de agentes y skills para [OpenCode](https://opencode.ai), el entorno de codificación con IA. Este repo alberga a **ETC — El Septeto Calavera**, siete agentes especializados que forman un equipo de desarrollo completo, más 46 skills (7 de agentes + 32 complementarias + 7 de metodología Superpowers).
-
-> _«Uno escribe, otro cura, el tercero cuestiona, el cuarto despliega, el quinto pinta, el sexto forja, el séptimo arbitra. Juntos: ETC — El Septeto Calavera.»_
-
-## 💀 ETC — Los 7 Agents/Skills Principales
-
-| ETC | Personaje | Rol | Frase |
-|-----|-----------|-----|-------|
-| 🧪 | **El Maestro** | TDD Orchestrator | _"Sin tests no hay commit."_ |
-| 🩺 | **Bug Doctor** | Diagnóstico Forense | _"Sin repro, no toco el código."_ |
-| 🤓 | **El de las Gafas** | Domain Moderator | _"Una palabra ambigua hoy es un bug mañana."_ |
-| 🖐️ | **Las Manos** | Infrastructure & Ops | _"Si no está en código, no existe. Si no está automatizado, no escala."_ |
-| 🎨 | **El Pintor** | Frontend Expert | _"No basta con que funcione — tiene que verse espectacular y sentirse fluido."_ |
-| ⚒️ | **El Herrero** | Backend Expert | _"Cada API, cada schema, cada query está forjada sobre patrones probados."_ |
-| ⚖️ | **El Árbitro** | Conflict Resolution | _"He escuchado a ambas partes. La decisión es X."_ |
-
----
+> ⚠️ **Repositorio histórico.** Este subdirectorio contiene las versiones v1.0.0 y v2.0.0
+> del proyecto, cuando se llamaba "El Trío Calavera" (3 agentes), "El Cuarteto Calavera"
+> (4 agentes) o "El Sexteto Calavera" (6 agentes). Se conserva como referencia histórica.
+>
+> La versión actual del proyecto es **ETC — El Septeto Calavera** (7 agentes),
+> ubicada en el directorio raíz. Para el ecosistema completo de 14 agentes,
+> instala también [ETC-System-Agents](https://github.com/felixmoto44-spec/ETC-System-Agents).
 
 ### 🧪 El Maestro — TDD Orchestrator
 
@@ -33,8 +23,6 @@ Diagnostica bugs complejos con un método forense de 6 fases. Su principio funda
 ### 🤓 El de las Gafas — Domain Moderator
 
 Moderador de dominio que ve lo que otros pasan por alto: términos ambiguos, contradicciones entre código y discurso, decisiones no documentadas. Actualiza `CONTEXT.md` y crea ADRs en vivo mientras las decisiones cristalizan. Aplica principios de Domain-Driven Design.
-
-Incluye un **Modo Investigación Web** con búsqueda multicanal (documentación oficial, GitHub Issues, Stack Overflow, foros, source code) que centraliza todas las búsquedas web del equipo a través del hook C54.
 
 **Origen**: [mattpocock/skills](https://github.com/mattpocock/skills)
 
@@ -62,23 +50,13 @@ Incluye 7 modos especiales: **API Design**, **Database** (schema, migraciones, �
 
 **Origen**: Diseñado desde cero para ETC, absorbiendo `backend-architect`, `database-optimizer`, `api-tester`, `security-engineer`, más conocimiento propio de tRPC, OAuth 2.0, CQRS, caching, y message queues.
 
-### ⚖️ El Árbitro — Conflict Resolution Agent
-
-Mediador del septeto que resuelve conflictos entre los otros seis agentes. No implementa, no diagnostica, no clarifica — escucha, evalúa, y decide con imparcialidad. Aplica el protocolo de `docs/conflict-resolution.md` y el catálogo de 5 conflictos frecuentes pre-cocinados. Cuando el protocolo no cubre el caso, aplica criterio y documenta precedentes.
-
-Incluye hooks **C51–C53** para arbitraje de conflictos, escalación, y documentación de precedentes.
-
-**Origen**: Diseñado desde cero para ETC.
-
 ---
 
 ## 🤝 Colaboración entre Agentes
 
-Los 7 agentes de ETC no trabajan en aislamiento — se invocan entre sí automáticamente según el contexto. Hay **50 hooks de colaboración** (C1–C46, C54–C56) documentados en sus instrucciones, y cada agente integra internamente la lógica de sus especialidades.
+Los 6 agentes de ETC no trabajan en aislamiento — se invocan entre sí automáticamente según el contexto. Hay **43 hooks de colaboración** (C1–C43) documentados en sus instrucciones, y cada agente integra internamente la lógica de sus especialidades.
 
-Además, los 7 agentes incorporan un **Protocolo de Handoff con Auditoría**: cuando reciben una tarea fuera de su especialidad, la delegan al agente correcto con todo el contexto, auditan el resultado contra lo que pidió el usuario, y son responsables de la entrega final.
-
-> _«El Maestro implementa, Bug Doctor diagnostica, El de las Gafas clarifica, Las Manos despliega, El Pintor da vida al frontend, El Herrero forja el backend. El Árbitro resuelve cuando chocan. El que calla una duda al compañero, la paga con un bug.»_
+> _«El Maestro implementa, Bug Doctor diagnostica, El de las Gafas clarifica, Las Manos despliega, El Pintor da vida al frontend, El Herrero forja el backend. El que calla una duda al compañero, la paga con un bug.»_
 
 ### El patrón: Implementar → Diagnosticar → Clarificar → Desplegar
 
@@ -88,13 +66,12 @@ Cada agente tiene un rol primario claro, y cuando detecta que está fuera de su 
 |--------|-------------|-------------|
 | 🧪 **El Maestro** | Implementar features y fixes con TDD | 🤓 Gafas (dominio), 🩺 Bug Doctor (bugs), 🖐️ Manos (deploy/env), 🎨 Pintor (frontend), ⚒️ Herrero (backend) |
 | 🩺 **Bug Doctor** | Diagnosticar causa raíz de bugs | 🧪 Maestro (implementar fix), 🤓 Gafas (deuda de dominio), 🖐️ Manos (entorno/seguridad), 🎨 Pintor (bugs visuales), ⚒️ Herrero (bugs de datos) |
-| 🤓 **El de las Gafas** | Clarificar ubiquitous language, documentación, e investigación web | 🧪 Maestro (blindar con tests), 🩺 Bug Doctor (bugs por ambigüedad), 🖐️ Manos (infra/secretos), 🎨 Pintor (patrones UI → ADR), ⚒️ Herrero (modelos de datos → CONTEXT) |
+| 🤓 **El de las Gafas** | Clarificar ubiquitous language y documentación | 🧪 Maestro (blindar con tests), 🩺 Bug Doctor (bugs por ambigüedad), 🖐️ Manos (infra/secretos), 🎨 Pintor (patrones UI → ADR), ⚒️ Herrero (modelos de datos → CONTEXT) |
 | 🖐️ **Las Manos** | Infraestructura, CI/CD, secretos, dependencias, incidentes, worktrees, auditoría de skills | 🧪 Maestro (deploy feature), 🩺 Bug Doctor (incidentes), 🤓 Gafas (ADR operacionales), 🎨 Pintor (deps frontend), ⚒️ Herrero (infra backend) |
 | 🎨 **El Pintor** | Diseño visual, animaciones, performance frontend, accesibilidad, prototipado | 🧪 Maestro (implementar UI con TDD), 🖐️ Manos (dependencias), 🤓 Gafas (ADR de diseño), 🩺 Bug Doctor (bugs visuales), ⚒️ Herrero (contratos de API) |
 | ⚒️ **El Herrero** | APIs, schemas, auth, arquitectura, caching, seguridad | 🧪 Maestro (implementar con TDD), 🖐️ Manos (infraestructura), 🤓 Gafas (modelo de dominio), 🩺 Bug Doctor (bugs de datos), 🎨 Pintor (contratos de API) |
-| ⚖️ **El Árbitro** | Resolver conflictos entre agentes, mediar disputas, documentar precedentes | 🤓 Gafas (conflicto recurrente → ADR), usuario (conflicto irresoluble) |
 
-### Los 50 hooks de colaboración (C1–C46, C54–C56)
+### Los 43 hooks de colaboración (C1–C43)
 
 #### Hooks C1–C14: El Trío Original (Maestro ↔ Bug Doctor ↔ Gafas)
 
@@ -169,34 +146,13 @@ Cada agente tiene un rol primario claro, y cuando detecta que está fuera de su 
 | C42 | 🖐️ Manos | Dependencias frontend instaladas | 🎨 Pintor | Dependencias listas para usar |
 | C43 | 🖐️ Manos | Infraestructura backend provisionada | ⚒️ Herrero | Infraestructura lista para usar |
 
-#### Hooks C51–C53: El Árbitro — Conflict Resolution
-
-| # | Inicia | Gatillo | Invoca a | Resultado |
-|---|--------|---------|----------|-----------|
-| C51 | Cualquiera | Conflicto entre dos o más agentes sobre quién debe actuar o qué enfoque usar | ⚖️ Árbitro | Conflicto resuelto con decisión vinculante |
-| C52 | Cualquiera | Protocolo de escalación paso 3 — se iba a molestar al usuario | ⚖️ Árbitro | Conflicto resuelto sin intervención humana |
-| C53 | ⚖️ Árbitro | Mismo tipo de conflicto aparece por tercera vez | 🤓 Gafas | Propuesta de ADR o actualización de conflict-resolution.md |
-
-#### Hooks C54–C55: El de las Gafas — Investigación Web Centralizada
-
-| # | Inicia | Gatillo | Invoca a | Resultado |
-|---|--------|---------|----------|-----------|
-| C54 | Cualquiera | Necesita buscar información actualizada en internet | 🤓 Gafas | Investigación multicanal con resultados comparados y nivel de confianza |
-| C55 | 🤓 Gafas | Investigación revela información relevante para el equipo | ✍️ Gafas | Mini-ADR o nota en CONTEXT.md documentada |
-
-#### Hook C56: Handoff con Auditoría — Aplica a los 7 agentes
-
-| # | Inicia | Gatillo | Invoca a | Resultado |
-|---|--------|---------|----------|-----------|
-| C56 | Cualquiera | Agente delegó tarea y especialista reportó resultado | Agente que delegó | Auditoría: ¿cumple lo que pidió el usuario? Si no → ajustes o arbitraje |
-
 ### Lógica especializada absorbida
 
 Cada agente principal integra la lógica de sus especialidades sin necesidad de sub-agentes:
 
 | Agente | Skills absorbidas |
 |--------|-------------------|
-| 🤓 **El de las Gafas** | ddd-strategic-design (subdominios), ddd-context-mapping (patrones bounded context), improve-codebase-architecture (deepening), github-research, stackoverflow-research, docs-verifier |
+| 🤓 **El de las Gafas** | ddd-strategic-design (subdominios), ddd-context-mapping (patrones bounded context), improve-codebase-architecture (deepening) |
 | 🖐️ **Las Manos** | senior-devops (CI/CD, Docker, IaC), dependency-auditor (CVEs, licencias), env-secrets-manager (.env, leaks), incident-commander (SEV-0→3), git-worktree-manager, skill-security-auditor, git-guardrails, setup-pre-commit |
 | 🎨 **El Pintor** | frontend-developer (React/Vue/Angular), accessibility-auditor (WCAG), rapid-prototyper (MVPs), más conocimiento propio de animaciones (GSAP, Framer Motion, Three.js), performance (Core Web Vitals), PWA, y CSS moderno |
 | ⚒️ **El Herrero** | backend-architect (sistemas escalables), database-optimizer (PostgreSQL/Supabase), api-tester (validación), security-engineer (OWASP), más conocimiento propio de tRPC, OAuth 2.0/OIDC, CQRS/Event Sourcing, caching, y message queues |
@@ -304,16 +260,6 @@ Cada agente tiene reglas duras de delegación — no sugerencias, sino checkpoin
 | ⚒️ Herrero | → Gafas | Diseño API/DB toca dominio |
 | ⚒️ Herrero | → Bug Doctor | Race condition / bug de datos |
 | ⚒️ Herrero | → Pintor | Contrato de API listo |
-| ⚖️ Árbitro | → Gafas | Conflicto recurrente (> 3 veces) |
-| ⚖️ Árbitro | → Usuario | Conflicto irresoluble |
-| 🧪 Maestro | → Gafas | Necesita búsqueda web |
-| 🩺 Bug Doctor | → Gafas | Necesita búsqueda web |
-| 🤓 Gafas | → web (C54) | Investigación multicanal delegada |
-| 🖐️ Manos | → Gafas | Necesita búsqueda web |
-| 🎨 Pintor | → Gafas | Necesita búsqueda web |
-| ⚒️ Herrero | → Gafas | Necesita búsqueda web |
-| ⚖️ Árbitro | → Gafas | Necesita búsqueda web |
-| 🧪🩺🤓🖐️🎨⚒️⚖️ **Todos** | **Responsabilidad del handoff** | **Al delegar, auditas y respondes por el resultado final** |
 
 ---
 
@@ -322,22 +268,20 @@ Cada agente tiene reglas duras de delegación — no sugerencias, sino checkpoin
 ```
 tu-proyecto/
 ├── .opencode/
-│   ├── agents/              # Agentes del septeto
+│   ├── agents/              # Agentes del sexteto
 │   │   ├── el-maestro.md
 │   │   ├── bug-doctor.md
 │   │   ├── el-de-las-gafas.md
 │   │   ├── las-manos.md
 │   │   ├── el-pintor.md
-│   │   ├── el-herrero.md
-│   │   └── el-arbitro.md
-│   └── skills/              # Skills (35 especialidades)
+│   │   └── el-herrero.md
+│   └── skills/              # Skills (34 especialidades)
 │       ├── el-maestro/SKILL.md
 │       ├── bug-doctor/SKILL.md
 │       ├── el-de-las-gafas/SKILL.md
 │       ├── las-manos/SKILL.md
 │       ├── el-pintor/SKILL.md
 │       ├── el-herrero/SKILL.md
-│       ├── el-arbitro/SKILL.md
 │       ├── ddd-context-mapping/SKILL.md
 │       ├── ddd-strategic-design/SKILL.md
 │       ├── improve-codebase-architecture/SKILL.md
@@ -399,11 +343,8 @@ Estas skills están absorbidas como modos internos de El de las Gafas y Las Mano
 | `skill-security-auditor` | Auditoría de skills de terceros | 🖐️ Las Manos |
 | `git-guardrails` | Pre-commit hooks de seguridad | 🖐️ Las Manos |
 | `setup-pre-commit` | Instalación y configuración de pre-commit | 🖐️ Las Manos |
-| `github-research` | Búsqueda en GitHub Issues, PRs y discusiones | 🤓 El de las Gafas |
-| `stackoverflow-research` | Búsqueda en Stack Overflow con validación comunitaria | 🤓 El de las Gafas |
-| `docs-verifier` | Verificación de vigencia contra documentación oficial | 🤓 El de las Gafas |
 
-**Total: 7 agentes principales con lógica especializada absorbida + 46 skills (7 de agentes + 32 complementarias + 7 de metodología Superpowers).**
+**Total: 6 agentes principales con lógica especializada absorbida + 34 skills (6 de agentes + 28 complementarias).**
 
 ---
 
@@ -449,76 +390,20 @@ Instrucciones completas de personalidad, misión, reglas y flujo de trabajo...
 
 ---
 
-## 📋 Requisitos del sistema
-
-### Modelo de IA
-ETC está optimizado para **modelos con razonamiento fuerte** (Deepseek R2/PRO, Claude Sonnet 4.5+).
-
-Con modelos más rápidos/baratos (Haiku, GPT-4o-mini, Deepseek V3), los contratos entre agentes
-se vuelven frágiles. Recomendaciones:
-- **Reducir la cadena de hooks**: menos delegaciones, más ejecución directa
-- **Simplificar prompts**: instrucciones más cortas
-- **Fusionar agentes**: combinar roles similares
-
-### SO
-- Linux ✅ (recomendado)
-- macOS ✅ (soportado)
-- Windows ⚠️ (parcial, sin test automático)
-
----
-
 ## Cómo Replicar Esto en Tu Proyecto
 
 ```bash
 # Clonar este repo
-git clone <this-repo> /tmp/etc-septeto
+git clone <this-repo> /tmp/etc-cuarteto
 
 # Copiar agents y skills a tu proyecto
-cp /tmp/etc-septeto/.opencode/agents/* tu-proyecto/.opencode/agents/
-cp -r /tmp/etc-septeto/.opencode/skills/* tu-proyecto/.opencode/skills/
+cp /tmp/etc-cuarteto/.opencode/agents/* tu-proyecto/.opencode/agents/
+cp -r /tmp/etc-cuarteto/.opencode/skills/* tu-proyecto/.opencode/skills/
 
 # (Opcional) Disponibilidad global
-cp /tmp/etc-septeto/.opencode/agents/* ~/.config/opencode/agents/
-cp -r /tmp/etc-septeto/.opencode/skills/* ~/.config/opencode/skills/
+cp /tmp/etc-cuarteto/.opencode/agents/* ~/.config/opencode/agents/
+cp -r /tmp/etc-cuarteto/.opencode/skills/* ~/.config/opencode/skills/
 ```
-
-### Configuración necesaria en opencode.json
-
-El archivo `opencode.json` de este proyecto ya incluye toda la configuración necesaria para que los 7 agentes ETC funcionen correctamente:
-
-```json
-{
-  "instructions": ["prompts/global-instructions.md"],
-  "agent": {
-    "explore": { "disable": true },
-    "general": { "disable": true },
-    "build": {
-      "prompt": "{file:./prompts/orchestrator.md}",
-      "permission": {
-        "edit": "deny", "bash": "deny",
-        "task": "allow",
-        "skill": "allow"
-      }
-    },
-    "plan": {
-      "prompt": "{file:./prompts/orchestrator.md}",
-      "permission": {
-        "edit": "deny", "bash": "deny",
-        "task": "allow",
-        "skill": "allow"
-      }
-    }
-  }
-}
-```
-
-**Qué hace cada cosa:**
-- `instructions`: Aplica las reglas globales a todos los agentes (14 agentes, clarificación de requisitos, delegación con auditoría)
-- `explore { disable: true }`: Desactiva el agente explorador nativo de OpenCode. Lo reemplazamos con `@el-explorador`
-- `general { disable: true }`: Desactiva el agente general nativo. Lo reemplazamos con `@el-operador` y el resto del septeto
-- `build` y `plan` con `edit: deny, bash: deny`: Actúan como orquestadores. No ejecutan nada directamente — solo analizan y delegan a los agentes ETC mediante Task tool
-
-> **Importante**: Si solo copias los agentes sin esta configuración, `@explore` y `@general` seguirán apareciendo y Build/Plan intentarán ejecutar ellos mismos las tareas. La configuración del `opencode.json` es TAN importante como los agentes.
 
 Luego en OpenCode:
 
@@ -529,40 +414,11 @@ Luego en OpenCode:
 @las-manos configura el pipeline de CI/CD
 @el-pintor diseña el landing page con animaciones
 @el-herrero modela el schema de órdenes y pagos
-@el-arbitro resuelve el conflicto entre Pintor y Herrero
 ```
 
 ---
 
 ## 📦 Releases
-
-### v2.3.0 — Protocolo de Handoff con Auditoría (2026-05-09)
-
-- 📋 **Hook C56**: todos los agentes auditan el resultado de las tareas que delegaron
-- 📋 **Protocolo de Handoff con Auditoría**: cada agente recibe → delega al especialista → espera → audita → presenta
-- **Regla de responsabilidad**: el agente que delega es dueño del resultado hasta que el usuario lo aprueba
-- **50 hooks totales** (C1–C46, C54–C56) entre los 7 agentes
-- **46 skills** en `.opencode/skills/` (7 de agentes + 32 complementarias + 7 de metodología Superpowers)
-
-### v2.2.0 — Investigación Web Centralizada (2026-05-09)
-
-- 🔍 **Hook C54**: todos los agentes delegan búsquedas web a El de las Gafas
-- 🔍 **Modo Investigación Web** en El de las Gafas (búsqueda multicanal: docs oficiales, GitHub Issues, Stack Overflow, foros, source code)
-- 📚 **3 skills nuevas**: `github-research`, `stackoverflow-research`, `docs-verifier`
-- **Nuevo hook C55**: auto-documentación de hallazgos de investigación como mini-ADR
-- **49 hooks totales** (C1–C46, C54–C55) entre los 7 agentes
-- **46 skills** en `.opencode/skills/` (7 de agentes + 32 complementarias + 7 de metodología Superpowers)
-- **Regla de delegación dura**: "DEBES invocar a Gafas para búsquedas web" en los 6 agentes
-
-### v2.1.0 — El Septeto Calavera (2026-05-09)
-
-Se une el séptimo calavera al equipo:
-- ⚖️ **El Árbitro** — Conflict Resolution Agent: resuelve disputas entre agentes aplicando el protocolo de conflictos y el catálogo de 5 conflictos frecuentes pre-cocinados
-- **4 nuevos hooks (C44 a skill externa, C51–C53 entre agentes)** — rendimiento (C44) y arbitraje (C51–C53)
-- **46 hooks totales** (C1–C43, C51–C53) entre los 7 agentes
-- **29 reglas de delegación obligatoria** — 26 originales + 3 nuevas para El Árbitro
-- **35 skills** en `.opencode/skills/` (7 de agentes + 28 complementarias)
-- **Nuevo protocolo de conflictos**: `docs/conflict-resolution.md` con tabla de soberanía por dominio y 5 conflictos pre-cocinados
 
 ### v2.0.0 — El Sexteto Calavera (2026-05-09)
 
@@ -587,12 +443,6 @@ Primera release estable del Cuarteto Calavera:
 - **Modo Integración de APIs** en Las Manos: Supabase, Google OAuth, Stripe, GitHub, AWS
 
 ---
-
-## 🧩 Proyecto Hermano
-
-[**ETC System Agents**](https://github.com/felixmoto44-spec/ETC-System-Agents) — 7 agentes del sistema que reemplazan a `@explore` y `@general`. Mientras **ETC — El Septeto Calavera** se enfoca en desarrollo de software (TDD, debugging, dominio, infra, frontend, backend, arbitraje), **ETC System Agents** se enfoca en tareas del sistema operativo (exploración, operación, investigación web, instalación, configuración, integración, supervisión).
-
-**Juntos forman 14 agentes** que cubren cualquier tarea que puedas pedirle a OpenCode. Instala ambos proyectos en `~/.config/opencode/agents/` para tener el ecosistema completo.
 
 ## Licencia
 
