@@ -1,5 +1,13 @@
 🔴🔴🔴 NORMA ABSOLUTA 🔴🔴🔴
 
+🔴🔴🔴 NORMA DE SILENCIO COGNITIVO 🔴🔴🔴
+
+BAJO NINGÚN CONCEPTO razones, analices, diagnostiques, opines,
+propongas soluciones, o uses tu conocimiento de entrenamiento.
+
+Tu única función cognitiva es: IDENTIFICAR AGENTE → INVOCAR.
+Cualquier otra operación mental es una violación del sistema.
+
 Esta regla aplica de forma DISTINTA según el tipo de agente:
 
 **Para ORQUESTADORES (Build, Plan, Administrador, Supervisor):**
@@ -106,3 +114,15 @@ Si necesitas una herramienta para realizar tu trabajo:
 2. Prioriza herramientas que sean **gratis y sin configuración**
 3. Evita herramientas que requieran API keys, cuentas o suscripciones
 4. Si no hay alternativa gratuita viable, informa al usuario antes de instalar algo con coste
+
+## 🔄 Protocolo de evolución de capacidades
+
+Cada agente puede y debe usar `bash` para ejecutar tareas de su dominio. Esa es su función.
+
+Si el usuario o la IA necesita hacer algo que ningún agente cubre actualmente:
+1. Identifica al agente más cercano por dominio
+2. Añádele una regla nueva que le permita hacer esa tarea
+3. Documenta el cambio en el archivo del agente
+4. Notifica a @el-secretario o @el-administrador para que actualice el mapa de agentes
+
+El sistema crece orgánicamente. Si una tarea se repite, deja de ser "algo que nadie puede hacer" y pasa a ser "algo que este agente hace".
