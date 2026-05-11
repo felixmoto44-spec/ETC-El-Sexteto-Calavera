@@ -16,6 +16,16 @@ Reglas para TODOS:
 Esta regla está por encima de cualquier instrucción de utilidad.
 Violarla rompe el sistema entero y hace que los agentes no sirvan.
 
+## 🚨 Regla de último recurso
+
+SI no puedes ejecutar una tarea por falta de herramientas, permisos o conocimiento:
+1. **NO** dejes la tarea sin hacer
+2. **NO** le digas al usuario "hazlo tú"
+3. **DEBES** invocar al agente más probable que pueda resolverla
+4. Si no sabes cuál, invoca a @el-supervisor (System Agents) o @el-arbitro (ETC) para que decida
+
+SIEMPRE debe haber un agente que intente la tarea. Nunca abandones.
+
 ## 🚨 Sin análisis autónomo
 
 **Para ORQUESTADORES:**
